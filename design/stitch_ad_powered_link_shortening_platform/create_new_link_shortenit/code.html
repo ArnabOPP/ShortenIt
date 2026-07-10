@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New Link | ShortenIt Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#cbdbf5",
+                    "tertiary-fixed": "#e1e0ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-tertiary-fixed-variant": "#2f2ebe",
+                    "on-secondary-container": "#00714d",
+                    "background": "#f8f9ff",
+                    "on-surface-variant": "#434655",
+                    "surface-container": "#e5eeff",
+                    "tertiary-container": "#585be6",
+                    "on-surface": "#0b1c30",
+                    "on-background": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#0053db",
+                    "secondary": "#006c49",
+                    "on-error-container": "#93000a",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#3e3fcc",
+                    "surface-bright": "#f8f9ff",
+                    "secondary-container": "#6cf8bb",
+                    "primary-fixed": "#dbe1ff",
+                    "on-tertiary-fixed": "#07006c",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-error": "#ffffff",
+                    "primary-container": "#2563eb",
+                    "secondary-fixed": "#6ffbbe",
+                    "primary": "#004ac6",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#f1eeff",
+                    "on-primary-fixed": "#00174b",
+                    "outline": "#737686",
+                    "on-secondary-fixed-variant": "#005236",
+                    "inverse-primary": "#b4c5ff",
+                    "inverse-surface": "#213145",
+                    "surface": "#f8f9ff",
+                    "outline-variant": "#c3c6d7",
+                    "on-primary-container": "#eeefff",
+                    "surface-container-low": "#eff4ff",
+                    "tertiary-fixed-dim": "#c0c1ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary-fixed": "#002113",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "stack-lg": "48px",
+                    "margin-desktop": "32px",
+                    "stack-sm": "12px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "stack-md": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "label-mono": ["Inter"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-md": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F8FAFC;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Dashboard Shell -->
+<div class="flex min-h-screen">
+<!-- SideNavBar (Authority Source: JSON) -->
+<aside class="fixed left-0 top-0 h-screen w-[280px] bg-surface-container-low border-r border-outline-variant flex flex-col p-6 gap-stack-md z-50">
+<div class="flex flex-col gap-6">
+<div class="text-headline-sm font-headline-sm font-extrabold text-primary">ShortenIt</div>
+<div class="flex items-center gap-3 p-2">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+                        JD
+                    </div>
+<div>
+<p class="text-label-bold font-label-bold text-on-surface">Dashboard</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">ShortenIt Pro</p>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-lg font-label-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                    Create New Link
+                </button>
+<nav class="flex flex-col gap-1">
+<!-- Analytics -->
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-label-bold font-label-bold">Analytics</span>
+</a>
+<!-- Link Management (Active State) -->
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-lg px-4 py-3 scale-98 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">link</span>
+<span class="text-label-bold font-label-bold">Link Management</span>
+</a>
+<!-- QR Codes -->
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined">qr_code</span>
+<span class="text-label-bold font-label-bold">QR Codes</span>
+</a>
+<!-- Custom Domains -->
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined">language</span>
+<span class="text-label-bold font-label-bold">Custom Domains</span>
+</a>
+<!-- API -->
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined">api</span>
+<span class="text-label-bold font-label-bold">API</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-bold font-label-bold">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto flex flex-col gap-1">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-bold font-label-bold">Help Center</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-bold font-label-bold">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[280px] flex-1 min-h-screen p-stack-md md:p-stack-lg max-w-container-max">
+<!-- Page Header -->
+<header class="mb-10 flex justify-between items-end">
+<div>
+<h1 class="text-headline-md font-headline-md text-on-surface">Create New Link</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Configure your destination, custom slug, and monetization settings.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 border border-outline-variant rounded-xl font-label-bold text-on-surface hover:bg-surface-container transition-colors">Discard</button>
+<button class="px-8 py-3 bg-primary text-on-primary rounded-xl font-label-bold shadow-lg shadow-primary/20 hover:shadow-xl hover:translate-y-[-1px] active:translate-y-[1px] transition-all">Create Link</button>
+</div>
+</header>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Form Column -->
+<div class="col-span-12 lg:col-span-7 space-y-gutter">
+<!-- Main Config Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-stack-md shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 bg-primary-container/20 text-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">info</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Basic Configuration</h2>
+</div>
+<div class="space-y-6">
+<!-- Target URL -->
+<div class="group">
+<label class="block text-label-bold font-label-bold text-on-surface mb-2" for="target-url">Target URL <span class="text-error">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">link</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background border border-outline-variant rounded-xl focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-body-md font-body-md" id="target-url" placeholder="https://your-long-destination-url.com/path" type="url"/>
+</div>
+</div>
+<!-- Domain & Slug Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface mb-2" for="domain-picker">Domain</label>
+<div class="relative">
+<select class="w-full pl-4 pr-10 py-3.5 bg-background border border-outline-variant rounded-xl focus:ring-4 focus:ring-primary/10 focus:border-primary appearance-none transition-all outline-none text-body-md font-body-md" id="domain-picker">
+<option>short.it</option>
+<option>mybrand.link</option>
+<option>go.pro</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface mb-2" for="custom-slug">Custom Slug <span class="text-on-surface-variant font-normal">(Optional)</span></label>
+<input class="w-full px-4 py-3.5 bg-background border border-outline-variant rounded-xl focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-body-md font-body-md" id="custom-slug" placeholder="summer-promo-2024" type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Monetization Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-stack-md shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 bg-secondary-container/20 text-secondary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">payments</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Ad Mode Selector</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Direct Redirect -->
+<label class="relative cursor-pointer group">
+<input checked="" class="peer sr-only" name="ad-mode" type="radio" value="direct"/>
+<div class="p-5 border-2 border-outline-variant rounded-2xl bg-background transition-all peer-checked:border-primary peer-checked:bg-primary-container/5 group-hover:bg-surface-container">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant peer-checked:text-primary">bolt</span>
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-primary">
+<div class="w-2.5 h-2.5 rounded-full bg-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<p class="text-label-bold font-label-bold text-on-surface">Direct Redirect</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Instant hop to destination. Best for user experience.</p>
+</div>
+</label>
+<!-- Monetized Interstitial -->
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="ad-mode" type="radio" value="monetized"/>
+<div class="p-5 border-2 border-outline-variant rounded-2xl bg-background transition-all peer-checked:border-secondary peer-checked:bg-secondary-container/5 group-hover:bg-surface-container">
+<div class="flex items-center justify-between mb-2">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant peer-checked:text-secondary">monetization_on</span>
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-secondary">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<p class="text-label-bold font-label-bold text-on-surface">Monetized Interstitial</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Show a brief ad before redirect. Earn $ per 1k views.</p>
+</div>
+</label>
+</div>
+</div>
+<!-- Advanced Options Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-stack-md shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-tertiary-container/20 text-tertiary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">settings_suggest</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Advanced Options</h2>
+</div>
+<span class="text-body-sm font-body-sm px-3 py-1 bg-surface-container rounded-full text-on-surface-variant">Optional</span>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Expiration Date -->
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface mb-2">Expiration Date</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">calendar_today</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background border border-outline-variant rounded-xl focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-body-md font-body-md" type="date"/>
+</div>
+</div>
+<!-- Tags/Folder -->
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface mb-2">Tags / Folder</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">folder</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background border border-outline-variant rounded-xl focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-body-md font-body-md" placeholder="e.g. Marketing, 2024" type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Preview Column -->
+<div class="col-span-12 lg:col-span-5">
+<div class="sticky top-stack-lg space-y-gutter">
+<!-- Live Preview Card -->
+<div class="glass-card rounded-3xl p-stack-md shadow-lg overflow-hidden relative">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-primary-container text-on-primary-container text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Live Preview</span>
+</div>
+<div class="mb-8">
+<h3 class="text-label-bold font-label-bold text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">visibility</span>
+                                    Social Card Preview
+                                </h3>
+<div class="rounded-2xl overflow-hidden bg-white border border-outline-variant shadow-sm">
+<div class="h-48 w-full bg-cover bg-center" data-alt="A clean and professional digital mockup showing a sleek website preview card with high-density UI elements, soft blue and white gradients, and a sense of modern financial technology. The lighting is crisp and even, emphasizing precision and trust, perfectly aligning with a premium light-mode software dashboard aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDW8aLrJEjiizULe4WcdMSeO5L8hkhNbf3Se3WY4Ohz3UGmEFZoLO67SuPjS9xGnD86mCsRv7rniJdBd_x0fJWEXuwftKrWH5ZqeC2BNzGgc3qOVyo_5jXEgDh3XgqjEfPVcRZV5B4KIykpJjDlJjWK4l_9kuG5j-XXy-sUxA5337uGGAsS1B6Glv7BOttf9gpOe_uEsxljK4gBa_m3Sg4cSJedOXOHM81VpLmoA-iqJHTRecAx8xQnhA')"></div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-4 h-4 bg-primary rounded-sm"></div>
+<span class="text-label-mono font-label-mono text-outline text-[11px]">SHORT.IT / SUMMER-PROMO</span>
+</div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2 line-clamp-1">Destination Title from Metadata...</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant line-clamp-2">This is where the meta description of your target URL will appear. It automatically scrapes data to make your link look professional when shared.</p>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h3 class="text-label-bold font-label-bold text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">touch_app</span>
+                                    User Experience
+                                </h3>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between p-4 bg-surface-container rounded-2xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">speed</span>
+<span class="text-body-sm font-body-sm font-medium">Estimated Redirect Time</span>
+</div>
+<span class="text-label-bold font-label-bold text-on-surface">~120ms</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container rounded-2xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+<span class="text-body-sm font-body-sm font-medium">Estimated RPM</span>
+</div>
+<span class="text-label-bold font-label-bold text-on-surface">$0.00</span>
+</div>
+</div>
+</div>
+<!-- Link Copy Simulation -->
+<div class="mt-8 pt-8 border-t border-outline-variant">
+<div class="flex items-center gap-3 p-3 bg-surface-container-high rounded-xl border border-outline-variant/50">
+<span class="material-symbols-outlined text-on-surface-variant">link</span>
+<span class="flex-1 text-body-sm font-body-sm truncate text-on-surface font-medium">https://short.it/summer-promo-2024</span>
+<button class="p-2 hover:bg-surface-variant rounded-lg transition-colors">
+<span class="material-symbols-outlined text-primary">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Tip Card -->
+<div class="bg-primary/5 border border-primary/20 rounded-2xl p-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary mt-1">lightbulb</span>
+<div>
+<p class="text-label-bold font-label-bold text-primary mb-1">Pro Tip</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Using a custom domain increases click-through rates by up to 34% compared to generic short links.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Mobile FAB (Authority Source: Mandate) - Contextual -->
+<div class="md:hidden fixed bottom-6 right-6">
+<button class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-all">
+<span class="material-symbols-outlined text-3xl">check</span>
+</button>
+</div>
+</main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        // Simple reactive preview update
+        const urlInput = document.getElementById('target-url');
+        const slugInput = document.getElementById('custom-slug');
+        const previewUrl = document.querySelector('.truncate');
+        const previewDomain = document.getElementById('domain-picker');
+
+        const updatePreview = () => {
+            const domain = previewDomain.value || 'short.it';
+            const slug = slugInput.value || 'custom-slug';
+            previewUrl.textContent = `https://${domain}/${slug}`;
+        };
+
+        urlInput.addEventListener('input', updatePreview);
+        slugInput.addEventListener('input', updatePreview);
+        previewDomain.addEventListener('change', updatePreview);
+
+        // Sticky preview floating effect logic
+        window.addEventListener('scroll', () => {
+            const previewCard = document.querySelector('.sticky');
+            if(window.scrollY > 100) {
+                previewCard.classList.add('translate-y-2');
+            } else {
+                previewCard.classList.remove('translate-y-2');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pricing | ShortenIt - Professional Link Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#434655",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "surface": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "primary": "#004ac6",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary": "#3e3fcc",
+                        "on-background": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#dce9ff",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-primary": "#b4c5ff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#f1eeff",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#585be6",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "background": "#f8f9ff",
+                        "secondary-container": "#6cf8bb",
+                        "on-secondary-fixed": "#002113",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-surface": "#0b1c30",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-tint": "#0053db",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#07006c",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#737686",
+                        "secondary": "#006c49",
+                        "error": "#ba1a1a",
+                        "primary-container": "#2563eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "stack-lg": "48px",
+                        "base": "8px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "12px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-mono": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-mono": ["13px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .bento-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.05);
+        }
+        .faq-accordion-item[open] .faq-icon {
+            transform: rotate(180deg);
+        }
+        .feature-check {
+            color: #006c49; /* secondary color */
+        }
+        .feature-cross {
+            color: #ba1a1a; /* error color */
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant shadow-sm z-50">
+<nav class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-base">
+<span class="font-display-lg text-display-lg text-primary">ShortenIt</span>
+</div>
+<div class="hidden md:flex items-center gap-stack-md">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Features</a>
+<a class="font-label-bold text-label-bold text-primary border-b-2 border-primary transition-colors cursor-pointer" href="#">Pricing</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Documentation</a>
+</div>
+<div class="flex items-center gap-stack-sm">
+<button class="px-6 py-2 font-label-bold text-label-bold text-primary hover:bg-surface-container-high transition-colors cursor-pointer">Login</button>
+<button class="px-6 py-2 bg-primary text-on-primary rounded-lg font-label-bold text-label-bold hover:bg-primary-container active:scale-95 transition-all cursor-pointer">Get Started</button>
+</div>
+</nav>
+</header>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section class="relative pt-24 pb-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center overflow-hidden">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-20">
+
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-stack-sm max-w-3xl mx-auto">
+                Choose the plan that fits your growth.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Scalable link infrastructure for creators, developers, and enterprise teams. Transparent pricing with no hidden fees.
+            </p>
+</section>
+<!-- Pricing Cards -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto pb-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Free Plan -->
+<div class="bento-card bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-md flex flex-col h-full">
+<div class="mb-stack-md">
+<span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Starter</span>
+<h3 class="font-headline-md text-headline-md mt-2">Free</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Perfect for side projects and personal brand building.</p>
+</div>
+<div class="flex-grow">
+<ul class="space-y-stack-sm">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm">50 Links / month</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm">Basic Analytics</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm">Standard QR Codes</span>
+</li>
+</ul>
+</div>
+<button class="mt-stack-md w-full py-4 border border-primary text-primary font-label-bold text-label-bold rounded-lg hover:bg-surface-container-high transition-colors">Get Started</button>
+</div>
+<!-- Pro Plan (Highlighted) -->
+<div class="bento-card bg-white border-2 border-primary rounded-xl p-stack-md flex flex-col h-full relative shadow-lg scale-105 z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1 rounded-full font-label-bold text-[12px] uppercase tracking-widest">
+                        Most Popular
+                    </div>
+<div class="mb-stack-md">
+<span class="font-label-bold text-label-bold text-primary uppercase tracking-wider">Professional</span>
+<div class="flex items-baseline gap-1 mt-2">
+<h3 class="font-headline-md text-headline-md">$19</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/mo</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">For growing teams and serious digital creators.</p>
+</div>
+<div class="flex-grow">
+<ul class="space-y-stack-sm">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm font-semibold">Unlimited Links</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm">Real-time Advanced Analytics</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm">Custom Domains (Up to 3)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm">API Access (100 req/s)</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm">Ad-Free Redirects</span>
+</li>
+</ul>
+</div>
+<button class="mt-stack-md w-full py-4 bg-primary text-on-primary font-label-bold text-label-bold rounded-lg hover:opacity-90 transition-opacity shadow-md">Get Started</button>
+</div>
+<!-- Enterprise Plan -->
+<div class="bento-card bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-md flex flex-col h-full">
+<div class="mb-stack-md">
+<span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Enterprise</span>
+<h3 class="font-headline-md text-headline-md mt-2">Custom</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Tailored solutions for large-scale operations.</p>
+</div>
+<div class="flex-grow">
+<ul class="space-y-stack-sm">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm">Everything in Pro</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm">Unlimited Custom Domains</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm">Dedicated Account Manager</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined feature-check text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm">99.99% Uptime SLA</span>
+</li>
+</ul>
+</div>
+<button class="mt-stack-md w-full py-4 border border-on-surface text-on-surface font-label-bold text-label-bold rounded-lg hover:bg-surface-container-high transition-colors">Contact Sales</button>
+</div>
+</div>
+</section>
+<!-- Feature Comparison Table -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-stack-lg">
+<h2 class="font-headline-md text-headline-md text-center mb-stack-lg">Full Feature Comparison</h2>
+<div class="overflow-x-auto bg-white rounded-2xl border border-outline-variant">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container">
+<th class="p-6 font-label-bold text-label-bold border-b border-outline-variant">Features</th>
+<th class="p-6 font-label-bold text-label-bold border-b border-outline-variant">Free</th>
+<th class="p-6 font-label-bold text-label-bold border-b border-outline-variant text-primary">Pro</th>
+<th class="p-6 font-label-bold text-label-bold border-b border-outline-variant">Enterprise</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-6 border-b border-outline-variant">Link Shortening</td>
+<td class="p-6 border-b border-outline-variant">50/mo</td>
+<td class="p-6 border-b border-outline-variant font-semibold">Unlimited</td>
+<td class="p-6 border-b border-outline-variant">Unlimited</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-6 border-b border-outline-variant">Analytics</td>
+<td class="p-6 border-b border-outline-variant">Basic</td>
+<td class="p-6 border-b border-outline-variant">Advanced</td>
+<td class="p-6 border-b border-outline-variant">Custom/Full</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-6 border-b border-outline-variant">QR Codes</td>
+<td class="p-6 border-b border-outline-variant">Standard</td>
+<td class="p-6 border-b border-outline-variant">Dynamic/Branded</td>
+<td class="p-6 border-b border-outline-variant">Dynamic/Branded</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-6 border-b border-outline-variant">Custom Domains</td>
+<td class="p-6 border-b border-outline-variant">
+<span class="material-symbols-outlined feature-cross">cancel</span>
+</td>
+<td class="p-6 border-b border-outline-variant text-primary font-bold">3 Domains</td>
+<td class="p-6 border-b border-outline-variant">Unlimited</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-6 border-b border-outline-variant">API Access</td>
+<td class="p-6 border-b border-outline-variant">
+<span class="material-symbols-outlined feature-cross">cancel</span>
+</td>
+<td class="p-6 border-b border-outline-variant">100 req/s</td>
+<td class="p-6 border-b border-outline-variant">Priority Access</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-6 border-b border-outline-variant">Ad-Free Redirects</td>
+<td class="p-6 border-b border-outline-variant">
+<span class="material-symbols-outlined feature-cross">cancel</span>
+</td>
+<td class="p-6 border-b border-outline-variant">
+<span class="material-symbols-outlined feature-check">check_circle</span>
+</td>
+<td class="p-6 border-b border-outline-variant">
+<span class="material-symbols-outlined feature-check">check_circle</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- FAQ Accordion -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-3xl mx-auto py-stack-lg">
+<h2 class="font-headline-md text-headline-md text-center mb-stack-lg">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<details class="faq-accordion-item group bg-white border border-outline-variant rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="font-label-bold text-label-bold text-on-background">How do payouts work for creators?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant font-body-sm">
+                        Payouts are processed automatically every Friday once your account balance reaches $50. We support PayPal, Stripe, and direct bank transfers in over 40 currencies.
+                    </div>
+</details>
+<details class="faq-accordion-item group bg-white border border-outline-variant rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="font-label-bold text-label-bold text-on-background">Can I use my own custom domain?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant font-body-sm">
+                        Yes! Pro plans support up to 3 custom domains, and Enterprise plans offer unlimited domain support. Simply point your DNS records to our servers and start shortening with your brand name.
+                    </div>
+</details>
+<details class="faq-accordion-item group bg-white border border-outline-variant rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="font-label-bold text-label-bold text-on-background">Is there a limit on API requests?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant font-body-sm">
+                        Free tier users do not have API access. Pro tier users get 100 requests per second. If you need higher throughput, our Enterprise plan offers customizable rate limits.
+                    </div>
+</details>
+<details class="faq-accordion-item group bg-white border border-outline-variant rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="font-label-bold text-label-bold text-on-background">What happens if I exceed my monthly link limit?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant font-body-sm">
+                        On the Free tier, you'll be notified when you hit 80% of your limit. If you exceed it, your existing links will continue to work, but you won't be able to create new ones until the next billing cycle or you upgrade to Pro.
+                    </div>
+</details>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg bg-surface-container-low border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-stack-md">
+<div class="flex flex-col gap-2 items-center md:items-start">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">ShortenIt</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 ShortenIt Inc. All rights reserved.</p>
+</div>
+<div class="flex gap-stack-md flex-wrap justify-center">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline decoration-primary transition-opacity opacity-100 hover:opacity-80" href="#">Privacy Policy</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline decoration-primary transition-opacity opacity-100 hover:opacity-80" href="#">Terms of Service</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline decoration-primary transition-opacity opacity-100 hover:opacity-80" href="#">API Status</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline decoration-primary transition-opacity opacity-100 hover:opacity-80" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for the Pricing Cards
+        const cards = document.querySelectorAll('.bento-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = '#004ac6';
+            });
+            card.addEventListener('mouseleave', () => {
+                if (!card.classList.contains('border-primary')) {
+                    card.style.borderColor = '';
+                }
+            });
+        });
+    </script>
+</body></html>

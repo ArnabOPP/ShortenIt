@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShortenIt Pro - API &amp; Documentation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E2E8F0;
+        }
+        .code-block {
+            background: #0b1c30;
+            color: #eeefff;
+            font-family: 'ui-monospace', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#00714d",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "on-secondary-fixed-variant": "#005236",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface": "#f8f9ff",
+                        "outline": "#737686",
+                        "tertiary-fixed": "#e1e0ff",
+                        "tertiary-container": "#585be6",
+                        "surface-container-low": "#eff4ff",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#6cf8bb",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "outline-variant": "#c3c6d7",
+                        "tertiary": "#3e3fcc",
+                        "on-primary-fixed": "#00174b",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-high": "#dce9ff",
+                        "on-surface-variant": "#434655",
+                        "inverse-primary": "#b4c5ff",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-container": "#f1eeff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#006c49",
+                        "on-surface": "#0b1c30",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-surface": "#213145",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary": "#004ac6",
+                        "on-tertiary-fixed": "#07006c",
+                        "on-background": "#0b1c30",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed": "#002113"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "stack-md": "24px",
+                        "margin-desktop": "32px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-mono": ["Inter"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- Dashboard Layout Wrapper -->
+<div class="flex min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-screen w-[280px] bg-surface-container-low border-r border-outline-variant flex flex-col p-6 gap-stack-md z-50">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">link</span>
+<span class="text-headline-sm font-headline-sm font-extrabold text-primary">ShortenIt</span>
+</div>
+<div class="flex flex-col gap-1 flex-grow">
+<div class="mb-4">
+<p class="text-on-surface-variant text-label-mono px-4 mb-2 uppercase">Core</p>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-label-bold font-label-bold">Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">link</span>
+<span class="text-label-bold font-label-bold">Link Management</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">qr_code</span>
+<span class="text-label-bold font-label-bold">QR Codes</span>
+</a>
+</div>
+<div>
+<p class="text-on-surface-variant text-label-mono px-4 mb-2 uppercase">Developer</p>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-lg px-4 py-3 scale-[0.98] transition-transform duration-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">api</span>
+<span class="text-label-bold font-label-bold">API</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">language</span>
+<span class="text-label-bold font-label-bold">Custom Domains</span>
+</a>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant flex flex-col gap-1">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-bold font-label-bold">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-bold font-label-bold">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-grow ml-[280px] p-margin-desktop max-w-container-max mx-auto">
+<!-- Page Header -->
+<header class="flex justify-between items-end mb-stack-lg">
+<div>
+<h1 class="text-headline-md font-headline-md text-on-surface mb-2">API &amp; Documentation</h1>
+<p class="text-body-md text-on-surface-variant">Build custom integrations and automate your link shortening workflow.</p>
+</div>
+<button class="bg-primary hover:bg-surface-tint text-on-primary px-6 py-3 rounded-xl font-label-bold flex items-center gap-2 shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                    Create New Key
+                </button>
+</header>
+<!-- Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- API Keys Management -->
+<section class="col-span-12 lg:col-span-8 flex flex-col gap-gutter">
+<!-- Keys Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-container-low/50">
+<h3 class="text-headline-sm font-headline-sm">Active API Keys</h3>
+<span class="bg-secondary-container text-on-secondary-container text-label-mono px-3 py-1 rounded-full">2 Keys Active</span>
+</div>
+<div class="divide-y divide-outline-variant">
+<!-- Key Row 1 -->
+<div class="p-6 hover:bg-surface-container transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-label-bold font-label-bold text-on-surface">Production Main</p>
+<p class="text-body-sm text-on-surface-variant">Created: Oct 24, 2023</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-variant rounded-lg text-on-surface-variant" title="Copy Key">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-lg text-on-surface-variant transition-colors" title="Revoke Key">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-grow bg-surface-variant px-4 py-3 rounded-lg font-mono text-body-sm text-on-surface-variant flex justify-between items-center border border-outline-variant">
+<span>sk_live_••••••••••••••••••••••••3a9f</span>
+<span class="material-symbols-outlined text-outline">visibility_off</span>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="text-label-mono text-secondary font-bold">ACTIVE</span>
+<span class="text-body-sm text-on-surface-variant">Last used: 2m ago</span>
+</div>
+</div>
+</div>
+<!-- Key Row 2 -->
+<div class="p-6 hover:bg-surface-container transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-label-bold font-label-bold text-on-surface">Staging Environment</p>
+<p class="text-body-sm text-on-surface-variant">Created: Sep 12, 2023</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-variant rounded-lg text-on-surface-variant" title="Copy Key">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-lg text-on-surface-variant transition-colors" title="Revoke Key">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-grow bg-surface-variant px-4 py-3 rounded-lg font-mono text-body-sm text-on-surface-variant flex justify-between items-center border border-outline-variant">
+<span>sk_test_••••••••••••••••••••••••7x2d</span>
+<span class="material-symbols-outlined text-outline">visibility_off</span>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="text-label-mono text-on-surface-variant font-bold opacity-50">INACTIVE</span>
+<span class="text-body-sm text-on-surface-variant">Last used: 14 days ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Usage Stats Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center">
+<h3 class="text-headline-sm font-headline-sm">Rate Limits &amp; Usage</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-body-sm">API Requests</span>
+</div>
+</div>
+</div>
+<div class="p-6 overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-label-mono text-on-surface-variant border-b border-outline-variant">
+<th class="pb-4 font-normal uppercase">Endpoint</th>
+<th class="pb-4 font-normal uppercase">Monthly Usage</th>
+<th class="pb-4 font-normal uppercase">Limit</th>
+<th class="pb-4 font-normal uppercase">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-4 font-label-bold text-on-surface">POST /v1/shorten</td>
+<td class="py-4">12,450 req</td>
+<td class="py-4 text-on-surface-variant">50,000 / mo</td>
+<td class="py-4">
+<div class="w-32 bg-surface-variant rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 25%"></div>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-4 font-label-bold text-on-surface">GET /v1/analytics</td>
+<td class="py-4">4,210 req</td>
+<td class="py-4 text-on-surface-variant">10,000 / mo</td>
+<td class="py-4">
+<div class="w-32 bg-surface-variant rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 42%"></div>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-4 font-label-bold text-on-surface">POST /v1/qr-generate</td>
+<td class="py-4">890 req</td>
+<td class="py-4 text-on-surface-variant">1,000 / mo</td>
+<td class="py-4">
+<div class="w-32 bg-surface-variant rounded-full h-2">
+<div class="bg-error h-2 rounded-full" style="width: 89%"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Documentation & Quick Start -->
+<aside class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<!-- Quick Start Code Card -->
+<div class="code-block rounded-xl overflow-hidden shadow-2xl flex flex-col">
+<div class="px-4 py-3 bg-on-surface/10 flex justify-between items-center border-b border-white/10">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-error/50"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-container/50"></div>
+<div class="w-3 h-3 rounded-full bg-primary/50"></div>
+</div>
+<span class="text-label-mono text-outline-variant text-[11px] uppercase tracking-widest">curl - quickstart</span>
+</div>
+<div class="p-6 relative">
+<button class="absolute top-4 right-4 text-outline-variant hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+<pre class="text-body-sm leading-relaxed overflow-x-auto whitespace-pre"><code><span class="text-secondary-fixed">curl</span> -X POST https://api.shorten.it/v1/links \
+  -H <span class="text-tertiary-fixed-dim">"Authorization: Bearer YOUR_API_KEY"</span> \
+  -H <span class="text-tertiary-fixed-dim">"Content-Type: application/json"</span> \
+  -d <span class="text-secondary-fixed">'{
+    "long_url": "https://example.com/very-long-path",
+    "domain": "short.it"
+  }'</span></code></pre>
+</div>
+<div class="mt-auto p-4 bg-white/5 border-t border-white/5 text-center">
+<a class="text-label-bold text-primary-fixed-dim hover:underline flex items-center justify-center gap-2" href="#">
+                                View Full Docs
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Resources Bento Card -->
+<div class="bg-surface-container-high rounded-xl p-6 flex flex-col gap-4 border border-outline-variant">
+<h4 class="text-label-bold text-on-surface uppercase">SDKs &amp; Libraries</h4>
+<div class="grid grid-cols-2 gap-3">
+<a class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant hover:border-primary transition-all flex flex-col gap-2 group" href="#">
+<img class="w-8 h-8 opacity-80 group-hover:opacity-100" data-alt="Official Python programming language logo with a modern, high-gloss 3D render effect, set against a clean professional light background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClbA1rbw0tkrblSjfrHfdK1muwchL_XWqMik_WpkVJc6F9oT-VKt3K9rX7raVIB0_tqUJnma19YqWmtnmCfsbwhfxsLQgH2mk_9336ay-_MPvZ3PGhDR71Ym1x1zSUlwkmAR3sB0zBOnz03_eQBx0TUCeHBNbDB3PgMSKvgZNJNr6xqlLzNWxidQK_4BfbXLCTZtPYxPw6mhei6RsTFdRn1OAAlv6Whr5V_asdu_nCjQaKTCWEy0jZ-Q"/>
+<span class="text-label-bold">Python</span>
+</a>
+<a class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant hover:border-primary transition-all flex flex-col gap-2 group" href="#">
+<img class="w-8 h-8 opacity-80 group-hover:opacity-100" data-alt="Official Node.js javascript environment logo, sleek and minimalist, with professional studio lighting and soft shadows on a white surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_R1KkRx3E5HLqeXA-6yVQ9c5Gh-nWn8JbgHUekI1gtzZJhtjE7vu3pyiRmsjGlMh1ts-jFBAv_YMObhKLTDccx6r4_pXaLFiPY03g3_r49yBnacwS-IKPSUiCDBW6k7jtHbnJ8uChNxKhSiMbGjYWKPFAALtpkJi0nFzbSuciXs56C1_ajNYcTpeZThQYZhFAqqdIt08ko7mFqvMrOFAhIToZzN4qglimPFczT1SYRwF_CjnCUveBaQ"/>
+<span class="text-label-bold">Node.js</span>
+</a>
+<a class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant hover:border-primary transition-all flex flex-col gap-2 group" href="#">
+<img class="w-8 h-8 opacity-80 group-hover:opacity-100" data-alt="Official Go programming language gopher mascot logo, rendered in a modern flat vector style with vibrant corporate colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRIriFvduAgbaswE0v203bmrOglbA36JiDb5GGJXnwsA5lbUYy1qYNa_uV-ATO1wKwBXt1YCgJKNhyCX_xNqtsk7XBW5JnQ3ku1X3i43RVZfAif0W5TDmb4EkRsv8SQOmA01W00ghb6zDyXthIr-snGp1crgxVyXlVXJsc4SRYqf1pQxPVBaZgRvf6LapGJXgcslaCZTsOYe6rmvQoJIRWha_K2rKZ6Qltup3O7ZVeLh5az4jX3MXUXg"/>
+<span class="text-label-bold">Go SDK</span>
+</a>
+<a class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant hover:border-primary transition-all flex flex-col gap-2 group" href="#">
+<img class="w-8 h-8 opacity-80 group-hover:opacity-100" data-alt="Official Ruby programming language red gem logo, high-quality crystal render with prismatic light reflections on a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWzPXqD0SJKQcOudNKFja18cxb3F0EQqnV_qWZt9gILlCQ3XQ0A3dVkMJBtg5gGgUs747PyRdSDufYmoNh_vQ6uc0y-358vKNKqDumsKMx1W6QeFmF7a6XBClspmgF5PLYt5VWfnZESl_KiIne8vH0xo_DFmasRN8ZrREFoqTcxZkZaQXXxgZZK0Dg12IH1HW4N7Kot5SALTMrqrNz7hkpklq0YBuowgoyxCJERUcE9XTwQ1w5bBOV8Q"/>
+<span class="text-label-bold">Ruby</span>
+</a>
+</div>
+</div>
+<!-- Support Card -->
+<div class="relative rounded-xl p-6 overflow-hidden group border border-outline-variant h-48 flex flex-col justify-end">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700" data-alt="Close-up of a high-tech server room with glowing blue LED indicator lights, represented in a sleek minimalist aesthetic with soft depth of field." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDuHR8va67kgm0d2uMObfN1uV2P0V-PMsDulMUMjtyLPN9vbwIS1roAUEQnsDrsqnD2Ca_vVdYmOhCfdP9VvTpq59MERjFvTK2jZZC0wCkv50DKqZ8cRWEaJp6Z9FgatnTRd2zca28E69gXt_BU5p0O2UP-_sp0mIyRszAlYqN73SKwEmhY3J_Go3vowl8F2INT6_EYIn2eKT6ug1-Anzb3DjuBufQcQlBLdyNcK0LyXpG5PXPo9Vx_Pw')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface to-transparent opacity-80"></div>
+</div>
+<div class="relative z-10">
+<p class="text-headline-sm font-headline-sm text-on-primary">Need Help?</p>
+<p class="text-body-sm text-on-primary/80 mb-4">Our developer advocates are here to assist with your custom implementation.</p>
+<a class="text-label-bold text-primary-fixed-dim hover:text-white transition-colors" href="#">Join our Discord →</a>
+</div>
+</div>
+</aside>
+</div>
+<!-- Footer Area (Shared Component Style) -->
+<footer class="mt-stack-lg pt-stack-md border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant">
+<p class="text-body-sm">© 2024 ShortenIt. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-label-mono hover:text-primary transition-colors" href="#">Legal</a>
+<a class="text-label-mono hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-label-mono hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-label-mono hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('mousedown', () => {
+                    btn.classList.add('scale-95');
+                });
+                btn.addEventListener('mouseup', () => {
+                    btn.classList.remove('scale-95');
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.classList.remove('scale-95');
+                });
+            });
+
+            // Simulate Copy action
+            const copyButtons = document.querySelectorAll('[title="Copy Key"]');
+            copyButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const originalIcon = btn.innerHTML;
+                    btn.innerHTML = '<span class="material-symbols-outlined text-secondary">check</span>';
+                    setTimeout(() => {
+                        btn.innerHTML = originalIcon;
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+</body></html>

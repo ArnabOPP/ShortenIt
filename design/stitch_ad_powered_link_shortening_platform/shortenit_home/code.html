@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShortenIt | Shrink Links. Grow Revenue.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#434655",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "surface": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "primary": "#004ac6",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary": "#3e3fcc",
+                        "on-background": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#dce9ff",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-primary": "#b4c5ff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#f1eeff",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#585be6",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "background": "#f8f9ff",
+                        "secondary-container": "#6cf8bb",
+                        "on-secondary-fixed": "#002113",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-surface": "#0b1c30",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-tint": "#0053db",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#07006c",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#737686",
+                        "secondary": "#006c49",
+                        "error": "#ba1a1a",
+                        "primary-container": "#2563eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "stack-lg": "48px",
+                        "base": "8px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "12px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-mono": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(0, 74, 198, 0.05) 0%, rgba(248, 249, 255, 0) 70%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-surface dark:bg-background border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none">
+<nav class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-display-lg text-display-lg text-primary dark:text-inverse-primary" href="/">ShortenIt</a>
+<div class="hidden md:flex gap-6">
+<a class="font-label-bold text-label-bold text-primary dark:text-inverse-primary border-b-2 border-primary cursor-pointer active:opacity-80 transition-all" href="#">Features</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80 transition-all" href="#">Pricing</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80 transition-all" href="#">Documentation</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-label-bold text-label-bold text-on-surface-variant px-4 py-2 hover:text-primary transition-colors cursor-pointer active:opacity-80 transition-all">Login</button>
+<button class="font-label-bold text-label-bold bg-primary text-on-primary px-6 py-2.5 rounded-full hover:bg-primary-container transition-all cursor-pointer active:opacity-80">Get Started</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-20 pb-32 hero-gradient">
+<div class="max-w-container-max mx-auto px-margin-desktop text-center">
+<h1 class="font-display-lg text-display-lg md:text-[72px] md:leading-[80px] mb-6 text-on-background">
+                    Shrink Links. <span class="text-primary">Grow Revenue.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+                    The world's most powerful link shortener that pays you. Turn every click into a high-conversion financial opportunity with precision analytics.
+                </p>
+<!-- Massive Input Field -->
+<div class="max-w-4xl mx-auto p-4 bg-surface-container-lowest rounded-[24px] shadow-2xl border border-outline-variant/30 flex flex-col md:flex-row gap-3">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">link</span>
+<input class="w-full h-16 pl-12 pr-4 bg-transparent border-none focus:ring-0 text-lg font-medium placeholder:text-outline-variant" placeholder="https://your-long-url-goes-here.com/very-long-path" type="text"/>
+</div>
+<button class="h-16 px-10 bg-primary text-on-primary font-label-bold text-lg rounded-xl hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20">
+                        Shorten Now
+                    </button>
+</div>
+<div class="mt-8 flex justify-center items-center gap-6 text-on-surface-variant font-label-bold text-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        No Credit Card Required
+                    </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Real-time Ad Tracking
+                    </div>
+</div>
+</div>
+</section>
+<!-- Trust Section -->
+<section class="py-16 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-desktop text-center">
+<p class="font-label-bold text-label-bold text-outline uppercase tracking-widest mb-10">Trusted by 50,000+ creators and businesses</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="h-8 w-32 bg-on-surface-variant/20 rounded"></div>
+<div class="h-8 w-28 bg-on-surface-variant/20 rounded"></div>
+<div class="h-8 w-36 bg-on-surface-variant/20 rounded"></div>
+<div class="h-8 w-30 bg-on-surface-variant/20 rounded"></div>
+<div class="h-8 w-32 bg-on-surface-variant/20 rounded"></div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-stack-lg bg-surface">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="text-center mb-20">
+<h2 class="font-headline-md text-headline-md text-on-background mb-4">Powerful Features for Growth</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Precision tools designed for professional link management.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Smart Analytics -->
+<div class="bg-surface-container-lowest p-stack-md rounded-[20px] border border-outline-variant hover:shadow-xl transition-all group">
+<div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[32px]">analytics</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">Smart Analytics</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Track geographic data, device types, and referral sources in real-time with pixel-perfect accuracy.</p>
+<div class="h-1 w-12 bg-primary/20 rounded group-hover:w-full transition-all duration-500"></div>
+</div>
+<!-- QR Code Engine -->
+<div class="bg-surface-container-lowest p-stack-md rounded-[20px] border border-outline-variant hover:shadow-xl transition-all group">
+<div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-6 text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-[32px]">qr_code_2</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">QR Code Engine</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Generate customizable, high-resolution QR codes for print and digital marketing campaigns instantly.</p>
+<div class="h-1 w-12 bg-secondary/20 rounded group-hover:w-full transition-all duration-500"></div>
+</div>
+<!-- Custom Branded Domains -->
+<div class="bg-surface-container-lowest p-stack-md rounded-[20px] border border-outline-variant hover:shadow-xl transition-all group">
+<div class="w-14 h-14 bg-tertiary/10 rounded-xl flex items-center justify-center mb-6 text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors">
+<span class="material-symbols-outlined text-[32px]">language</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-3">Branded Domains</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Increase trust and CTR by using your own custom domain names for all shortened links.</p>
+<div class="h-1 w-12 bg-tertiary/20 rounded group-hover:w-full transition-all duration-500"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-stack-lg bg-surface-container-low/50">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col md:flex-row items-center justify-between gap-16">
+<div class="w-full md:w-1/2">
+<h2 class="font-headline-md text-headline-md mb-6">From Link to Revenue in 3 Steps</h2>
+<div class="space-y-10">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-bold text-xl shadow-lg shadow-primary/20">1</div>
+<div>
+<h4 class="font-headline-sm text-[20px] mb-2">Paste Link</h4>
+<p class="text-on-surface-variant">Drop your long URL into our high-performance engine. We handle the rest instantly.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-bold text-xl shadow-lg shadow-primary/20">2</div>
+<div>
+<h4 class="font-headline-sm text-[20px] mb-2">Choose Ad Mode</h4>
+<p class="text-on-surface-variant">Select from non-intrusive ad layers to monetize your traffic without hurting user experience.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-bold text-xl shadow-lg shadow-primary/20">3</div>
+<div>
+<h4 class="font-headline-sm text-[20px] mb-2">Share &amp; Earn</h4>
+<p class="text-on-surface-variant">Distribute your branded link. Watch your dashboard balance grow as users engage.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 relative">
+<div class="aspect-square bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-[40px] flex items-center justify-center p-12 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#004ac6_1px,transparent_1px)] [background-size:20px_20px]"></div>
+<div class="w-full h-full bg-surface-container-lowest rounded-3xl shadow-2xl border border-outline-variant p-8 relative z-10">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 bg-secondary-container rounded-full"></div>
+<div class="space-y-2 flex-grow">
+<div class="h-3 w-1/2 bg-surface-variant rounded"></div>
+<div class="h-2 w-1/4 bg-surface-variant rounded"></div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="h-32 w-full bg-primary/5 rounded-2xl flex items-end p-4">
+<div class="flex gap-2 w-full h-full items-end">
+<div class="w-full bg-primary/20 rounded-t h-[40%]"></div>
+<div class="w-full bg-primary/40 rounded-t h-[60%]"></div>
+<div class="w-full bg-primary/60 rounded-t h-[30%]"></div>
+<div class="w-full bg-primary/80 rounded-t h-[90%]"></div>
+<div class="w-full bg-primary rounded-t h-[100%]"></div>
+</div>
+</div>
+<div class="flex justify-between">
+<div class="h-10 w-32 bg-surface-container-high rounded-lg"></div>
+<div class="h-10 w-32 bg-primary rounded-lg"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-stack-lg bg-surface">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-on-background mb-4">Loved by Performance Marketers</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4 mb-6">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="A professional headshot of a female digital marketer in her 30s, smiling warmly against a soft studio background. The lighting is bright and modern, consistent with a clean corporate light-mode design. She has a look of confidence and success, wearing a stylish business-casual outfit in neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsbi5xITXRC9zLIMfoZIHWNOTGVvgbmski2yJT-6kJexXfL_OXrG6Ga4WLIXMQC4Go9QF6ZY9s8OSWGotIu0AexpuXmlzICbi3wkKHRpJ-EQ39F691MoU7F4vGn7Mt7BBoGifRyxrvgfumCpdxu7SjmAwkQj96DYbdPBgs9lsIozZKZ1__EN4Al8HOUDLcD0AFrYnS1Fl64EbjOrBRd14tJMNhA06H7d0gJi5x5m8OcO1a0SFyYDQA7Q"/>
+<div>
+<p class="font-label-bold text-label-bold">Sarah Jenkins</p>
+<p class="text-xs text-on-surface-variant">Content Creator</p>
+</div>
+</div>
+<p class="italic text-on-surface-variant">"ShortenIt transformed how I monetize my bio links. The custom domains added so much professionalism to my brand, and the revenue tracking is pinpoint accurate."</p>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4 mb-6">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="A close-up portrait of a tech entrepreneur in a modern office setting. He is a male in his late 20s with a sharp, clean-cut appearance, looking directly at the camera with an expression of professional reliability. The workspace behind him is blurred, showing a high-tech, minimalist environment with blue and emerald accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwzkXTgay_1x7HD2w-zgt2_8vDSoMWd_wxTelCz-SnR-zLyUeSOkaC4UbX6mb_u-XGXTYtRcyOrNfuabj5NQB2z3d5dcnKkfkZsLxLtOSSihqUR3Tp-fCQK1fp3IwfJnyHTl3A9V_7TItnwZxZziKpTMPqYWWUMqIAH3qhsCVZfd6_yv4PnsB6NhDJhCFKu2fx-WR_-03cBZ17I-jqB2rmyGfIVrNWspc9bE5P90Fi7_lrXy_xiHvDHg"/>
+<div>
+<p class="font-label-bold text-label-bold">David Chen</p>
+<p class="text-xs text-on-surface-variant">Affiliate Marketer</p>
+</div>
+</div>
+<p class="italic text-on-surface-variant">"The analytics are where ShortenIt really shines. I can see exactly which social platforms are driving the highest quality traffic. It's a game changer for my ROI."</p>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4 mb-6">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="A portrait of a creative professional woman with a stylish, modern look. She is in a bright, airy co-working space with natural light. The overall aesthetic is clean, professional, and sophisticated, emphasizing a light-mode corporate design. Her expression is focused and capable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7fV2Sizdbv3RAuzNuXU3SC6q_Mj93n34t-BhTaJaalPTl6mNYKTeKTr7l7_ln0WDjVjW3l891s4bhiZ_Z2hGdnqDKPsD78lDt4nNMdXBsUt1WuAUFPC285dcKIEvYOUjql1jyUup0jTugux3l7mGTh9yglXpjMplg9A6jf3bS-Dx2-pJPGRtLspcZLFNLIkr5YCo4B2E7doplXlIt54eN6nTTYUjw_99_vLtOAdkhmn9IGqZ9Ax4Y9Q"/>
+<div>
+<p class="font-label-bold text-label-bold">Elena Rodriguez</p>
+<p class="text-xs text-on-surface-variant">SaaS Founder</p>
+</div>
+</div>
+<p class="italic text-on-surface-variant">"Integration was seamless. We use their API for our enterprise link management and the uptime has been 100% over the last year. Highly recommended."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-stack-lg">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="bg-primary-container rounded-[40px] p-16 text-center text-on-primary overflow-hidden relative">
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_#ffffff_1px,_transparent_1px)] [background-size:32px_32px]"></div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md mb-6">Ready to maximize your link potential?</h2>
+<p class="font-body-lg text-body-lg mb-10 opacity-90 max-w-xl mx-auto">Join 50,000+ users who are already scaling their growth with ShortenIt.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-on-primary text-primary font-label-bold px-10 py-4 rounded-xl hover:bg-surface transition-all">Create Free Account</button>
+<button class="border border-on-primary text-on-primary font-label-bold px-10 py-4 rounded-xl hover:bg-white/10 transition-all">View Pricing</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg bg-surface-container-low dark:bg-background border-t border-outline-variant dark:border-outline shadow-sm">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">ShortenIt</span>
+<p class="font-label-mono text-label-mono text-on-surface-variant">© 2024 ShortenIt Inc. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline decoration-primary opacity-100 hover:opacity-80 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline decoration-primary opacity-100 hover:opacity-80 transition-opacity" href="#">Terms of Service</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline decoration-primary opacity-100 hover:opacity-80 transition-opacity" href="#">API Status</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline decoration-primary opacity-100 hover:opacity-80 transition-opacity" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth scroll for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple button click micro-interaction
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+    </script>
+</body></html>

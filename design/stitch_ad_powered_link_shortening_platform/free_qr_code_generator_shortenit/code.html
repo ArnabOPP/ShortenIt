@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Free QR Code Generator | ShortenIt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#00714d",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#c0c1ff",
+                    "on-primary-container": "#eeefff",
+                    "on-tertiary-fixed-variant": "#2f2ebe",
+                    "on-secondary-fixed-variant": "#005236",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#0053db",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface": "#f8f9ff",
+                    "outline": "#737686",
+                    "tertiary-fixed": "#e1e0ff",
+                    "tertiary-container": "#585be6",
+                    "surface-container-low": "#eff4ff",
+                    "background": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#6cf8bb",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container": "#e5eeff",
+                    "outline-variant": "#c3c6d7",
+                    "tertiary": "#3e3fcc",
+                    "on-primary-fixed": "#00174b",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-high": "#dce9ff",
+                    "on-surface-variant": "#434655",
+                    "inverse-primary": "#b4c5ff",
+                    "primary-container": "#2563eb",
+                    "on-tertiary-container": "#f1eeff",
+                    "error-container": "#ffdad6",
+                    "secondary": "#006c49",
+                    "on-surface": "#0b1c30",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "secondary-fixed-dim": "#4edea3",
+                    "surface-dim": "#cbdbf5",
+                    "inverse-surface": "#213145",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary": "#004ac6",
+                    "on-tertiary-fixed": "#07006c",
+                    "on-background": "#0b1c30",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "base": "8px",
+                    "stack-md": "24px",
+                    "margin-desktop": "32px",
+                    "stack-sm": "12px",
+                    "stack-lg": "48px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-bold": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-mono": ["Inter"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-qr-preview {
+            background-image: radial-gradient(#d3e4fe 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary-fixed-dim">ShortenIt</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-bold font-label-bold" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-bold font-label-bold" href="#">Pricing</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-bold font-label-bold" href="#">Blog</a>
+<a class="text-primary border-b-2 border-primary pb-1 text-label-bold font-label-bold" href="#">Tools</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-label-bold font-label-bold" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 text-primary font-label-bold hover:bg-surface-container transition-colors duration-200">Login</button>
+<button class="px-6 py-2 bg-primary text-on-primary rounded-lg font-label-bold hover:shadow-lg active:scale-95 transition-all duration-150">Sign Up</button>
+</div>
+</div>
+</nav>
+<main class="w-full">
+<!-- Hero Section -->
+<section class="relative overflow-hidden pt-stack-lg pb-stack-md px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto text-center">
+<span class="inline-block px-4 py-1.5 mb-4 rounded-full bg-secondary-container text-on-secondary-container font-label-bold text-label-mono">FREE SEO TOOL</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6">Branded QR Code Generator</h1>
+<p class="max-w-2xl mx-auto text-body-lg text-on-surface-variant font-body-lg">Create high-resolution, customized QR codes for your brand in seconds. No registration required, always free, and SEO-optimized for your growth.</p>
+</div>
+</section>
+<!-- Generator Interface -->
+<section class="px-margin-mobile md:px-margin-desktop pb-stack-lg">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left: Configuration (Col 7) -->
+<div class="lg:col-span-7 space-y-stack-md">
+<!-- URL Input Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl shadow-sm">
+<label class="block text-headline-sm font-headline-sm text-on-surface mb-4" for="qr-url">Enter Destination URL</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">link</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl border border-outline-variant focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none text-body-md" id="qr-url" placeholder="https://yourbrand.com/campaign-landing" type="url"/>
+</div>
+</div>
+<!-- Customization Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-sm">
+<!-- Colors -->
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl">
+<h3 class="font-label-bold text-label-bold text-on-surface mb-4 uppercase tracking-wider">Style &amp; Colors</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Foreground Color</span>
+<input class="w-10 h-10 rounded-lg cursor-pointer border-none bg-transparent" type="color" value="#004ac6"/>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Background Color</span>
+<input class="w-10 h-10 rounded-lg cursor-pointer border-none bg-transparent" type="color" value="#ffffff"/>
+</div>
+</div>
+</div>
+<!-- Logo Upload -->
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl">
+<h3 class="font-label-bold text-label-bold text-on-surface mb-4 uppercase tracking-wider">Brand Logo</h3>
+<div class="flex flex-col items-center justify-center border-2 border-dashed border-outline-variant rounded-lg p-4 hover:bg-surface-variant transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary mb-2">upload_file</span>
+<span class="text-label-mono font-label-mono text-on-surface-variant group-hover:text-primary">Click to upload SVG/PNG</span>
+<input class="hidden" id="logo-upload" type="file"/>
+</div>
+</div>
+<!-- Advanced Customization -->
+<div class="md:col-span-2 bg-surface-container-lowest border border-outline-variant p-6 rounded-xl">
+<h3 class="font-label-bold text-label-bold text-on-surface mb-4 uppercase tracking-wider">QR Pattern Design</h3>
+<div class="flex gap-4 overflow-x-auto pb-2">
+<button class="flex-shrink-0 w-12 h-12 border-2 border-primary rounded-lg flex items-center justify-center">
+<div class="w-6 h-6 bg-primary rounded-sm"></div>
+</button>
+<button class="flex-shrink-0 w-12 h-12 border border-outline-variant rounded-lg flex items-center justify-center hover:border-primary">
+<div class="w-6 h-6 bg-outline-variant rounded-full"></div>
+</button>
+<button class="flex-shrink-0 w-12 h-12 border border-outline-variant rounded-lg flex items-center justify-center hover:border-primary">
+<div class="w-6 h-6 border-2 border-outline-variant rotate-45"></div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Preview & Download (Col 5) -->
+<div class="lg:col-span-5 sticky top-24 h-fit">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-lg overflow-hidden">
+<div class="bg-surface-container p-4 border-b border-outline-variant flex justify-between items-center">
+<span class="font-label-bold text-label-bold text-on-surface">Live Preview</span>
+<span class="flex items-center gap-1 text-on-secondary-container bg-secondary-container px-2 py-0.5 rounded text-label-mono">
+<span class="material-symbols-outlined text-sm">verified</span> Verified
+                            </span>
+</div>
+<div class="p-stack-md flex flex-col items-center custom-qr-preview">
+<div class="w-64 h-64 bg-white p-4 shadow-xl rounded-2xl relative mb-8 group overflow-hidden">
+<img class="w-full h-full object-contain" data-alt="A clean, high-resolution QR code generated on a white square card with rounded corners. The QR code pattern is intricate and uses a deep primary blue color palette. In the center of the QR code, there is a small placeholder logo representing a modern tech brand. The image has soft studio lighting and is presented against a subtle grid-pattern background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgeZHHc2pm7ptWoUKhIStLJNLYBy9AEyjQQex95uKH6GmEo1X3c9jxGzPVnzIiwR3H16bZukVWX7v-INPEbZv4qABPOypQPjYS-dI6Zy7oEIeNawnc00H0ecnPz6TYrLWaM8dk2JHpFMjsNjoon4B8H3SS5GeqaeQUNobg-IkWtpfuw_7ZwcUTP4BgJ1NyKvbn9v5z_Hi9i-94SPw_EEQHxx_SHI1QZYfUchXpoJxko9T5YxTcMwnxxg"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl">zoom_in</span>
+</div>
+</div>
+<div class="w-full space-y-4">
+<button class="w-full py-4 bg-primary text-on-primary rounded-lg font-headline-sm flex items-center justify-center gap-2 hover:bg-primary-container transition-all active:scale-95">
+<span class="material-symbols-outlined">download</span> Download High-Res
+                                </button>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 border border-outline-variant rounded font-label-mono text-on-surface-variant hover:bg-surface-variant">PNG</button>
+<button class="py-2 border border-outline-variant rounded font-label-mono text-on-surface-variant hover:bg-surface-variant">SVG</button>
+<button class="py-2 border border-outline-variant rounded font-label-mono text-on-surface-variant hover:bg-surface-variant">PDF</button>
+</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low border-t border-outline-variant">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+<p class="text-body-sm font-body-sm">Tracking enabled. Data points captured: Scans, Location, Device.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SEO Text Content Section -->
+<section class="bg-surface-container-low py-stack-lg px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center">
+<div class="space-y-6">
+<h2 class="text-headline-md font-headline-md text-on-surface">Why use branded QR codes for your business?</h2>
+<div class="space-y-4 text-on-surface-variant font-body-md">
+<p>In the modern digital landscape, <strong>branded QR codes</strong> are more than just a bridge between physical and digital worlds—they are a critical touchpoint for trust. Traditional black-and-white QR codes often look suspicious or clinical. By integrating your brand's colors and logo, you increase user confidence and scan rates by up to 40%.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary">done_all</span>
+<div>
+<p class="font-label-bold">Improved Brand Recall</p>
+<p class="text-body-sm">Reinforce identity at every physical touchpoint.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+<div>
+<p class="font-label-bold">SEO &amp; Traffic Tracking</p>
+<p class="text-body-sm">Link directly to keyword-optimized landing pages.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary">security</span>
+<div>
+<p class="font-label-bold">Phishing Prevention</p>
+<p class="text-body-sm">Verified logos signal legitimate content sources.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary">speed</span>
+<div>
+<p class="font-label-bold">Instant Conversion</p>
+<p class="text-body-sm">Eliminate friction between offline ads and online sales.</p>
+</div>
+</div>
+</div>
+</div>
+<button class="text-primary font-label-bold flex items-center gap-2 hover:underline">
+                            Read our full guide to QR SEO <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+<div class="relative">
+<div class="bg-primary/5 absolute inset-0 rounded-3xl -rotate-2"></div>
+<div class="relative bg-surface-container-lowest p-8 border border-outline-variant rounded-3xl shadow-xl">
+<img class="w-full rounded-2xl h-80 object-cover mb-6" data-alt="A professional marketing strategist in a bright, modern corporate office environment. The person is holding a high-end smartphone and scanning a large, branded QR code displayed on a sleek, minimalist product packaging box. The office has glass walls, lush indoor plants, and natural sunlight streaming in, creating an atmosphere of innovation and financial growth. The color palette features whites, light blues, and soft emerald greens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqpTA84x13tsuwU1nSsflt3jcdKQ3jOqHRGA2fuAFLBSMg2B74LnhT0cdS7bEVrm_U90M270JjpL1bHJJIHKMXgO_I4SFh3OPVSCEoFkgQLh7nOM8l7wA8YCb_0-Sx4YjLwf459tyweM50xsmooYFvEsE0Nt4GNd9-VDQRGfQ8MPnrSLrpndIQvQfy1qeVG0qTDkDK485RxCrOd6qaXKriu4JQUlIWMU2m6a6DhCgQENizYTPGkqGrjA"/>
+<div class="flex justify-between items-end">
+<div>
+<h4 class="text-headline-sm font-headline-sm">Performance First</h4>
+<p class="text-body-sm text-on-surface-variant">Our codes are optimized for 0.4s scan times.</p>
+</div>
+<div class="text-right">
+<span class="text-label-mono font-label-mono text-on-secondary-container bg-secondary-container px-3 py-1 rounded-full">+12% Growth</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bulk Action Banner -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto bg-on-surface text-on-primary rounded-3xl p-stack-lg overflow-hidden relative">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-primary/20 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="max-w-xl">
+<h2 class="text-display-lg-mobile md:text-headline-md font-display-lg mb-4">Need hundreds of QR codes?</h2>
+<p class="text-body-lg opacity-80">Our Bulk Generator tool allows you to upload a CSV and generate thousands of branded QR codes in a single click. Ideal for retail, events, and asset tracking.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+<button class="px-8 py-4 bg-primary text-on-primary rounded-xl font-label-bold hover:bg-primary-container transition-all text-center">Open Bulk Generator</button>
+<button class="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-xl font-label-bold hover:bg-white/20 transition-all text-center">Talk to Sales</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline full-width">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop py-stack-lg max-w-container-max mx-auto gap-8 md:gap-0">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="text-label-bold font-label-bold text-primary dark:text-primary-fixed-dim">ShortenIt</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">© 2024 ShortenIt. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-opacity text-label-mono font-label-mono" href="#">Legal</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity text-label-mono font-label-mono" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity text-label-mono font-label-mono" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity text-label-mono font-label-mono" href="#">Contact</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline hover:text-primary cursor-pointer">share</span>
+<span class="material-symbols-outlined text-outline hover:text-primary cursor-pointer">language</span>
+</div>
+</div>
+</footer>
+<script>
+        // Simple interactivity for the URL input
+        const urlInput = document.getElementById('qr-url');
+        const previewImg = document.querySelector('.custom-qr-preview img');
+        
+        urlInput.addEventListener('input', (e) => {
+            // Simulated live preview update
+            if(e.target.value) {
+                previewImg.style.opacity = '0.5';
+                setTimeout(() => {
+                    previewImg.style.opacity = '1';
+                }, 150);
+            }
+        });
+
+        // Logo upload simulation
+        const logoUpload = document.getElementById('logo-upload');
+        logoUpload.parentElement.addEventListener('click', () => logoUpload.click());
+    </script>
+</body></html>

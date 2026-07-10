@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bulk Link Shortener - ShortenIt SEO Tools</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#00714d",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#c0c1ff",
+                    "on-primary-container": "#eeefff",
+                    "on-tertiary-fixed-variant": "#2f2ebe",
+                    "on-secondary-fixed-variant": "#005236",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#0053db",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface": "#f8f9ff",
+                    "outline": "#737686",
+                    "tertiary-fixed": "#e1e0ff",
+                    "tertiary-container": "#585be6",
+                    "surface-container-low": "#eff4ff",
+                    "background": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#6cf8bb",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container": "#e5eeff",
+                    "outline-variant": "#c3c6d7",
+                    "tertiary": "#3e3fcc",
+                    "on-primary-fixed": "#00174b",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-high": "#dce9ff",
+                    "on-surface-variant": "#434655",
+                    "inverse-primary": "#b4c5ff",
+                    "primary-container": "#2563eb",
+                    "on-tertiary-container": "#f1eeff",
+                    "error-container": "#ffdad6",
+                    "secondary": "#006c49",
+                    "on-surface": "#0b1c30",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "secondary-fixed-dim": "#4edea3",
+                    "surface-dim": "#cbdbf5",
+                    "inverse-surface": "#213145",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary": "#004ac6",
+                    "on-tertiary-fixed": "#07006c",
+                    "on-background": "#0b1c30",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "base": "8px",
+                    "stack-md": "24px",
+                    "margin-desktop": "32px",
+                    "stack-sm": "12px",
+                    "stack-lg": "48px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-bold": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-mono": ["Inter"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #E2E8F0;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- Top Navigation Bar -->
+<nav class="bg-surface-container-lowest docked full-width top-0 sticky z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="text-headline-md font-headline-md font-extrabold text-primary">ShortenIt</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-bold text-label-bold" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-bold text-label-bold" href="#">Pricing</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-bold text-label-bold" href="#">Blog</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-label-bold text-label-bold" href="#">Tools</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-bold text-label-bold" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-primary font-label-bold text-label-bold px-4 py-2 transition-all active:scale-95">Login</button>
+<button class="bg-primary text-on-primary font-label-bold text-label-bold px-6 py-2.5 rounded-lg shadow-sm hover:opacity-90 transition-all active:scale-95">Sign Up</button>
+</div>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-margin-desktop py-stack-lg">
+<!-- Hero Header -->
+<header class="mb-stack-lg space-y-4">
+<div class="inline-flex items-center gap-2 bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full text-label-mono font-label-mono">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+                SEO POWER TOOL
+            </div>
+<h1 class="text-display-lg font-display-lg text-on-surface">Bulk URL Shortener</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl">Transform thousands of links in seconds. Optimize your SEO workflow with precision, speed, and automated ad-monetization controls.</p>
+</header>
+<!-- Main Workspace -->
+<div class="bento-grid">
+<!-- Input Section -->
+<section class="col-span-12 lg:col-span-7 space-y-6">
+<div class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant shadow-sm transition-all duration-300 hover:shadow-md">
+<div class="flex items-center justify-between mb-4">
+<label class="text-label-bold font-label-bold text-on-surface" for="bulk-urls">Paste Destination URLs</label>
+<span class="text-body-sm font-body-sm text-outline" id="link-counter">0 links detected</span>
+</div>
+<textarea class="w-full h-80 rounded-xl border border-outline-variant bg-surface-container-low p-4 focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all font-body-md text-on-surface placeholder-outline/50 resize-none" id="bulk-urls" placeholder="https://example.com/page-1
+https://example.com/page-2
+https://example.com/page-3"></textarea>
+<div class="mt-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
+<div class="flex flex-col gap-2 w-full sm:w-auto">
+<span class="text-label-bold font-label-bold text-on-surface">Global Ad Mode</span>
+<div class="flex gap-2 p-1 bg-surface-container-low rounded-lg border border-outline-variant">
+<button class="px-4 py-2 rounded-md bg-white text-primary shadow-sm text-label-bold font-label-bold transition-all">Interstitial</button>
+<button class="px-4 py-2 rounded-md text-on-surface-variant hover:bg-surface-variant transition-all text-label-bold font-label-bold">Banner Only</button>
+<button class="px-4 py-2 rounded-md text-on-surface-variant hover:bg-surface-variant transition-all text-label-bold font-label-bold">No Ads</button>
+</div>
+</div>
+<button class="w-full sm:w-auto bg-primary text-on-primary px-8 py-4 rounded-xl font-headline-sm text-headline-sm flex items-center justify-center gap-2 hover:opacity-95 active:scale-95 transition-all shadow-lg" onclick="processLinks()">
+<span class="material-symbols-outlined">auto_fix_high</span>
+                            Shorten All
+                        </button>
+</div>
+</div>
+</section>
+<!-- Stats/Instructions Sidebar -->
+<aside class="col-span-12 lg:col-span-5 space-y-6">
+<!-- Info Card 1 -->
+<div class="glass-card p-6 rounded-xl space-y-4">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Precision Processing</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Our engine validates each URL for syntax errors before shortening to ensure 100% deliverability for your SEO campaigns.</p>
+</div>
+<!-- Info Card 2 -->
+<div class="bg-surface-container-high p-6 rounded-xl border border-primary/10">
+<div class="flex items-start gap-4">
+<div class="flex-1 space-y-2">
+<div class="text-label-bold font-label-bold text-primary">BULK LIMITS</div>
+<h4 class="text-body-md font-bold text-on-surface">Up to 5,000 URLs</h4>
+<p class="text-body-sm text-on-surface-variant">Free users can process 50 links per batch. Upgrade to Pro for unlimited bulk shortening.</p>
+</div>
+<button class="bg-surface-container-lowest p-2 rounded-full border border-outline-variant hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Visual Asset -->
+<div class="relative h-48 rounded-xl overflow-hidden bg-surface-container-highest flex items-center justify-center group">
+<div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
+<div class="w-full h-full bg-cover bg-center" data-alt="A futuristic, high-tech digital grid showing interconnected data nodes and glowing blue light pathways, representing high-speed link redirection and global networking. The visual style is professional, corporate, and minimal with a soft glow effect on the lines." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTWlAqfHvg7SjpHoz8q1Br667G6eI9z3Yo8fsSdLKyYjTxVC2GqnKawJu-vOvsGeHFJhucmNW6DJtXRdKyGohslwupW4gp7bKLiItSe89syL5S0gQ7ApulRp5C9z4GEqwg4Xr-oqMtk7A4JiNYnH1Ccl9m5qOOr1eyMNYNy_24Q27kTjOvsBm5r0VPzq9Svp-rDFBiBSxDDwxz659G3lZcgu89HhozbYPkm2oZWB86zIbybRF_IuScsQ')"></div>
+</div>
+<div class="z-10 text-center p-6">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">monitoring</span>
+<div class="text-headline-sm font-headline-sm text-on-surface">Auto-Track Enabled</div>
+<p class="text-body-sm text-on-surface-variant">All links include UTM persistence</p>
+</div>
+</div>
+</aside>
+<!-- Results Table (Initially hidden or empty) -->
+<section class="col-span-12 hidden opacity-0 translate-y-4 transition-all duration-500" id="results-container">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm">
+<div class="p-6 border-b border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Generated Results</h2>
+<p class="text-body-sm text-on-surface-variant">Your shortened URLs are ready to be deployed.</p>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 bg-secondary text-on-secondary px-6 py-2.5 rounded-lg text-label-bold font-label-bold hover:opacity-90 transition-all active:scale-95" onclick="copyAllLinks()">
+<span class="material-symbols-outlined">content_copy</span>
+                                Copy All
+                            </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 border border-outline-variant text-on-surface-variant px-6 py-2.5 rounded-lg text-label-bold font-label-bold hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined">download</span>
+                                Export CSV
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low text-label-mono font-label-mono text-outline uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4 border-b border-outline-variant">Original URL</th>
+<th class="px-6 py-4 border-b border-outline-variant">Shortened URL</th>
+<th class="px-6 py-4 border-b border-outline-variant">Ad Mode</th>
+<th class="px-6 py-4 border-b border-outline-variant text-right">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-on-surface" id="results-body">
+<!-- Dynamic Rows -->
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant mt-stack-lg">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop py-stack-lg max-w-container-max mx-auto gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="text-label-bold font-label-bold text-primary">ShortenIt</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">The definitive bulk link shortener for digital marketers and SEO specialists.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-opacity text-label-mono font-label-mono" href="#">Legal</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity text-label-mono font-label-mono" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity text-label-mono font-label-mono" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity text-label-mono font-label-mono" href="#">Contact</a>
+</div>
+<div class="text-on-surface-variant text-body-sm font-body-sm">
+                © 2024 ShortenIt. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        const textarea = document.getElementById('bulk-urls');
+        const counter = document.getElementById('link-counter');
+        const resultsContainer = document.getElementById('results-container');
+        const resultsBody = document.getElementById('results-body');
+
+        textarea.addEventListener('input', () => {
+            const lines = textarea.value.split('\n').filter(l => l.trim().length > 0);
+            counter.innerText = `${lines.length} link${lines.length === 1 ? '' : 's'} detected`;
+        });
+
+        function processLinks() {
+            const lines = textarea.value.split('\n').filter(l => l.trim().length > 0);
+            if (lines.length === 0) {
+                alert('Please enter at least one URL');
+                return;
+            }
+
+            // Simulate processing
+            resultsBody.innerHTML = '';
+            lines.forEach((url, index) => {
+                const shortUrl = `shrt.it/${Math.random().toString(36).substring(7)}`;
+                const row = `
+                    <tr class="hover:bg-surface-container-low transition-colors group">
+                        <td class="px-6 py-4 border-b border-outline-variant max-w-xs truncate">${url}</td>
+                        <td class="px-6 py-4 border-b border-outline-variant font-medium text-primary">${shortUrl}</td>
+                        <td class="px-6 py-4 border-b border-outline-variant">
+                            <span class="px-2 py-1 bg-secondary-container/20 text-on-secondary-container rounded text-[12px] font-bold">INTERSTITIAL</span>
+                        </td>
+                        <td class="px-6 py-4 border-b border-outline-variant text-right">
+                            <button onclick="copySingle('${shortUrl}', this)" class="text-outline hover:text-primary transition-colors p-1">
+                                <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                resultsBody.insertAdjacentHTML('beforeend', row);
+            });
+
+            resultsContainer.classList.remove('hidden');
+            setTimeout(() => {
+                resultsContainer.classList.remove('opacity-0', 'translate-y-4');
+            }, 50);
+
+            // Smooth scroll to results
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function copySingle(text, btn) {
+            navigator.clipboard.writeText(text);
+            const icon = btn.querySelector('.material-symbols-outlined');
+            const original = icon.innerText;
+            icon.innerText = 'check';
+            icon.classList.add('text-secondary');
+            setTimeout(() => {
+                icon.innerText = original;
+                icon.classList.remove('text-secondary');
+            }, 2000);
+        }
+
+        function copyAllLinks() {
+            const links = Array.from(document.querySelectorAll('#results-body td:nth-child(2)'))
+                              .map(td => td.innerText)
+                              .join('\n');
+            navigator.clipboard.writeText(links);
+            alert('All ' + document.querySelectorAll('#results-body tr').length + ' links copied to clipboard!');
+        }
+    </script>
+</body></html>

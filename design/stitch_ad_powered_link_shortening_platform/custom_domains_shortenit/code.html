@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Custom Domains | ShortenIt Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E2E8F0;
+        }
+        .dns-code-block {
+            font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#00714d",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "on-secondary-fixed-variant": "#005236",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface": "#f8f9ff",
+                        "outline": "#737686",
+                        "tertiary-fixed": "#e1e0ff",
+                        "tertiary-container": "#585be6",
+                        "surface-container-low": "#eff4ff",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#6cf8bb",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "outline-variant": "#c3c6d7",
+                        "tertiary": "#3e3fcc",
+                        "on-primary-fixed": "#00174b",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-high": "#dce9ff",
+                        "on-surface-variant": "#434655",
+                        "inverse-primary": "#b4c5ff",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-container": "#f1eeff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#006c49",
+                        "on-surface": "#0b1c30",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-surface": "#213145",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary": "#004ac6",
+                        "on-tertiary-fixed": "#07006c",
+                        "on-background": "#0b1c30",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed": "#002113"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "stack-md": "24px",
+                        "margin-desktop": "32px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-mono": ["Inter"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- Dashboard Layout Wrapper -->
+<div class="flex min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-screen w-[280px] bg-surface-container-low border-r border-outline-variant flex flex-col p-6 gap-stack-md z-50">
+<div class="mb-6">
+<span class="text-headline-sm font-headline-sm font-extrabold text-primary">ShortenIt</span>
+</div>
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="text-label-bold font-label-bold text-on-surface">Dashboard</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">ShortenIt Pro</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1 flex-grow">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-label-bold font-label-bold">Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">link</span>
+<span class="text-label-bold font-label-bold">Link Management</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">qr_code</span>
+<span class="text-label-bold font-label-bold">QR Codes</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-lg px-4 py-3 scale-98 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">language</span>
+<span class="text-label-bold font-label-bold">Custom Domains</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">api</span>
+<span class="text-label-bold font-label-bold">API</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-bold font-label-bold">Settings</span>
+</a>
+</nav>
+<button class="mt-4 bg-primary text-on-primary rounded-lg py-3 px-4 font-label-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+                Create New Link
+            </button>
+<div class="mt-auto border-t border-outline-variant pt-6 flex flex-col gap-1">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-bold font-label-bold">Help Center</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-bold font-label-bold">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-[280px] flex-1 p-margin-desktop max-w-container-max mx-auto">
+<!-- Page Header -->
+<header class="flex justify-between items-end mb-stack-lg">
+<div>
+<h1 class="text-display-lg font-display-lg text-on-surface">Custom Domains</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mt-2">Connect your own brand to ShortenIt Pro with white-labeled short URLs.</p>
+</div>
+<button class="bg-secondary text-on-secondary px-6 py-3 rounded-lg font-label-bold flex items-center gap-2 hover:opacity-90 transition-all shadow-sm" onclick="document.getElementById('add-domain-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined">add_link</span>
+                    Connect New Domain
+                </button>
+</header>
+<!-- Bento Layout Content -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Active Domains List (Left Column) -->
+<div class="col-span-12 lg:col-span-8 space-y-stack-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-6 py-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Connected Domains</h3>
+<span class="text-label-mono font-label-mono text-on-surface-variant bg-surface-container px-2 py-1 rounded">3 Active Domains</span>
+</div>
+<div class="divide-y divide-outline-variant">
+<!-- Domain Row 1 -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">public</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<p class="text-label-bold font-label-bold text-on-surface">go.mybrand.com</p>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] uppercase font-bold px-1.5 py-0.5 rounded tracking-wider">Verified</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Default domain for all links • Added Mar 12, 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Domain Row 2 -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">alternate_email</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<p class="text-label-bold font-label-bold text-on-surface">links.devstudio.io</p>
+<span class="bg-error-container text-on-error-container text-[10px] uppercase font-bold px-1.5 py-0.5 rounded tracking-wider">Pending DNS</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Waiting for A Record propagation • Added 2 hours ago</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-surface-variant text-on-surface-variant px-4 py-1.5 rounded-lg text-label-bold hover:bg-primary hover:text-on-primary transition-all">Verify Now</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Domain Row 3 -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">public</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<p class="text-label-bold font-label-bold text-on-surface">s.agency.net</p>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] uppercase font-bold px-1.5 py-0.5 rounded tracking-wider">Verified</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Client Project: Alpha • Added Jan 04, 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- DNS Instructions Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6">
+<div class="flex items-center gap-3 mb-6">
+<div class="bg-tertiary-container text-on-tertiary-container p-2 rounded-lg">
+<span class="material-symbols-outlined">dns</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">DNS Configuration Guide</h3>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-outline-variant text-on-surface flex items-center justify-center font-bold">1</div>
+<div>
+<p class="font-label-bold text-on-surface">Log in to your DNS provider</p>
+<p class="text-body-sm text-on-surface-variant mt-1">Access the DNS management console for the domain you want to link (e.g., GoDaddy, Cloudflare, Namecheap).</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-outline-variant text-on-surface flex items-center justify-center font-bold">2</div>
+<div class="w-full">
+<p class="font-label-bold text-on-surface">Add the following DNS Records</p>
+<p class="text-body-sm text-on-surface-variant mt-1 mb-4">Choose either an A Record for apex domains or a CNAME for subdomains.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- CNAME Option -->
+<div class="bg-surface p-4 rounded-lg border border-outline-variant">
+<div class="flex justify-between items-center mb-3">
+<span class="text-label-mono text-primary bg-primary-fixed px-2 py-0.5 rounded">CNAME Record</span>
+<span class="text-body-sm text-on-surface-variant">(Subdomains)</span>
+</div>
+<div class="space-y-3">
+<div class="dns-code-block text-[13px] bg-white p-2 border rounded flex justify-between items-center group">
+<span class="text-on-surface-variant">Host: <b class="text-on-surface">go</b></span>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-sm">content_copy</span></button>
+</div>
+<div class="dns-code-block text-[13px] bg-white p-2 border rounded flex justify-between items-center group">
+<span class="text-on-surface-variant">Value: <b class="text-on-surface">cname.shortenit.io</b></span>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-sm">content_copy</span></button>
+</div>
+</div>
+</div>
+<!-- A Record Option -->
+<div class="bg-surface p-4 rounded-lg border border-outline-variant">
+<div class="flex justify-between items-center mb-3">
+<span class="text-label-mono text-secondary bg-secondary-fixed px-2 py-0.5 rounded">A Record</span>
+<span class="text-body-sm text-on-surface-variant">(Apex)</span>
+</div>
+<div class="space-y-3">
+<div class="dns-code-block text-[13px] bg-white p-2 border rounded flex justify-between items-center group">
+<span class="text-on-surface-variant">Host: <b class="text-on-surface">@</b></span>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-sm">content_copy</span></button>
+</div>
+<div class="dns-code-block text-[13px] bg-white p-2 border rounded flex justify-between items-center group">
+<span class="text-on-surface-variant">Value: <b class="text-on-surface">76.76.21.21</b></span>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-sm">content_copy</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-outline-variant text-on-surface flex items-center justify-center font-bold">3</div>
+<div>
+<p class="font-label-bold text-on-surface">Wait for propagation</p>
+<p class="text-body-sm text-on-surface-variant mt-1">DNS changes can take up to 48 hours to propagate globally, though they usually resolve in minutes. Our system will auto-verify once detected.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats & Sidebar (Right Column) -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<!-- Usage Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="text-label-bold font-label-bold text-on-surface-variant mb-4">Plan Usage</h4>
+<div class="text-[32px] font-bold text-on-surface mb-2">3 <span class="text-body-md font-normal text-on-surface-variant">/ 5 domains</span></div>
+<div class="w-full bg-surface-container-high h-2 rounded-full mb-6">
+<div class="bg-tertiary h-2 rounded-full" style="width: 60%"></div>
+</div>
+<div class="flex justify-between items-center p-3 bg-surface rounded-lg">
+<span class="text-body-sm">Upgrade for more domains</span>
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+</div>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-5">
+<span class="material-symbols-outlined text-[160px]">language</span>
+</div>
+</div>
+<!-- SSL Status Widget -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<h4 class="text-label-bold font-label-bold text-on-surface">Automatic SSL</h4>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-4">We automatically provision and renew Let's Encrypt SSL certificates for every verified domain.</p>
+<div class="flex items-center gap-2 text-secondary font-label-bold text-body-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                            All systems operational
+                        </div>
+</div>
+<!-- Domain Visual Card -->
+<div class="relative h-64 rounded-xl overflow-hidden border border-outline-variant">
+<div class="w-full h-full bg-cover bg-center" data-alt="A sophisticated close-up shot of a modern fiber-optic network cable glowing with deep blue and soft white lights in a dark server room. The aesthetic is clean, professional, and high-tech, representing speed and connectivity. Minimalist corporate lighting highlights the sleek textures of the hardware, creating a sense of reliability and growth." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDzUUBpwAmnjBR9x23OUz7r_nRXY661As9BlBwQbTAhaSV4asycO8xjI4IDBDyycLWifxC8mD48Pad91jkIHz3dKgAOloplkkGOrexNyVtYKMAiTTyBiM1yY2Rwx58trGQmHmT3fMfNSGeNWgHJl_FenB1OIgOxYf8cJ9giQmA9vyIAQqFm2jWKM7j8VPOLiaXaoc_KkqCDTDq7P3EuWTICXn4mixm3f3qbXdwU-xWx09qnVM8JSo42-g')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent flex flex-col justify-end p-6">
+<span class="text-white font-headline-sm text-headline-sm">Global CDN Ready</span>
+<p class="text-white/80 text-body-sm">Your custom links are served via 200+ edge locations for sub-100ms latency.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<footer class="mt-stack-lg pt-stack-md border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-4">
+<span class="text-label-bold font-label-bold text-primary">ShortenIt</span>
+<span class="text-body-sm text-on-surface-variant">© 2024 ShortenIt. All rights reserved.</span>
+</div>
+<div class="flex gap-6">
+<a class="text-label-mono font-label-mono text-on-surface-variant hover:text-primary transition-colors" href="#">Legal</a>
+<a class="text-label-mono font-label-mono text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-label-mono font-label-mono text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-label-mono font-label-mono text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</footer>
+</main>
+</div>
+<!-- Add Domain Modal (Hidden by default) -->
+<div class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4" id="add-domain-modal">
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm" onclick="this.parentElement.classList.add('hidden')"></div>
+<div class="relative bg-surface-container-lowest border border-outline-variant rounded-xl shadow-xl w-full max-w-lg p-8 animate-in fade-in zoom-in duration-200">
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-2">Connect a Domain</h2>
+<p class="text-body-sm text-on-surface-variant mb-6">Enter the domain or subdomain you want to use for your short links.</p>
+<div class="space-y-4">
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface mb-1.5">Domain Name</label>
+<input class="w-full px-4 py-3 rounded-xl border border-outline-variant focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all" placeholder="e.g., links.mybrand.com" type="text"/>
+</div>
+<div class="flex items-start gap-3 p-4 bg-surface-container-low rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-body-sm text-on-surface-variant">You'll need to update your DNS settings after adding the domain to complete the connection.</p>
+</div>
+<div class="flex gap-3 pt-4">
+<button class="flex-1 px-4 py-3 border border-outline-variant rounded-lg font-label-bold hover:bg-surface-variant transition-colors" onclick="document.getElementById('add-domain-modal').classList.add('hidden')">Cancel</button>
+<button class="flex-1 px-4 py-3 bg-primary text-on-primary rounded-lg font-label-bold hover:opacity-90 transition-opacity shadow-md">Add Domain</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        // Simple micro-interaction for active states
+        document.querySelectorAll('nav a, footer a').forEach(link => {
+            link.addEventListener('mousedown', () => {
+                link.classList.add('scale-95');
+            });
+            link.addEventListener('mouseup', () => {
+                link.classList.remove('scale-95');
+            });
+            link.addEventListener('mouseleave', () => {
+                link.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

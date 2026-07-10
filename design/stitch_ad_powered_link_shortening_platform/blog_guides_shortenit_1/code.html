@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ShortenIt Blog - Master Link Management &amp; Monetization</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E2E8F0;
+        }
+        .blog-card-shadow {
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .blog-card-shadow:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#cbdbf5",
+                        "tertiary-fixed": "#e1e0ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "on-secondary-container": "#00714d",
+                        "background": "#f8f9ff",
+                        "on-surface-variant": "#434655",
+                        "surface-container": "#e5eeff",
+                        "tertiary-container": "#585be6",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#0053db",
+                        "secondary": "#006c49",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#3e3fcc",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-container": "#6cf8bb",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#07006c",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "secondary-fixed": "#6ffbbe",
+                        "primary": "#004ac6",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#f1eeff",
+                        "on-primary-fixed": "#00174b",
+                        "outline": "#737686",
+                        "on-secondary-fixed-variant": "#005236",
+                        "inverse-primary": "#b4c5ff",
+                        "inverse-surface": "#213145",
+                        "surface": "#f8f9ff",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-low": "#eff4ff",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed": "#002113",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "stack-lg": "48px",
+                        "margin-desktop": "32px",
+                        "stack-sm": "12px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["Inter"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-md": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary-fixed-dim">ShortenIt</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 text-label-bold font-label-bold" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 text-label-bold font-label-bold" href="#">Pricing</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 text-label-bold font-label-bold" href="#">Blog</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 text-label-bold font-label-bold" href="#">Tools</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 text-label-bold font-label-bold" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary-fixed-dim text-label-bold font-label-bold px-4 py-2 hover:bg-surface-variant rounded-lg transition-all active:scale-95">Login</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-lg text-label-bold font-label-bold hover:brightness-110 shadow-sm transition-all active:scale-95">Sign Up</button>
+</div>
+</div>
+</nav>
+<!-- Page Header -->
+<header class="relative overflow-hidden pt-20 pb-16 bg-surface-container-low">
+<div class="absolute inset-0 z-0 opacity-10">
+
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-desktop text-center">
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg text-on-surface mb-4">ShortenIt Blog</h1>
+<p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Advanced insights into link optimization, high-yield monetization strategies, and the latest updates in technical link management for modern creators.
+            </p>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="max-w-container-max mx-auto px-margin-desktop py-stack-lg">
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Article Grid -->
+<div class="flex-1">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Blog Card 1 -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant blog-card-shadow">
+<div class="h-52 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="A clean, professional workspace with a sleek laptop showing data analytics charts in primary blue tones. The lighting is bright and architectural, reflecting a modern corporate aesthetic with high-quality textures of glass and metal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHlGTZWwwfKlzLrs8oVFLOtgLTLQs2AyPoLEuaDcozktELl2hRsQcxmGf9t4eaIklbmXi0EVeL8UmWoLzjWo02dpgOMNQV_inxyqjSkmFPkM1oRwoEPIYvOnK8qK5fVHS5HC8NsBDmxVJ0fmZmZGskyQYaU9K0BKTfjoYVe6wq-VfjSH18ZroFKOkxrLESnJKHxAoal3_9k2LEaZ9EcwWnUSqpz71NS3VgPTCVFC61NfwGInqvv_MKjw"/>
+</div>
+<div class="p-stack-md flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-label-mono font-label-mono rounded-full uppercase tracking-wider">SEO</span>
+<span class="text-body-sm text-on-surface-variant">5 min read</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-3 line-clamp-2">Optimizing Your Redirects for Search Engine Performance</h2>
+<p class="text-body-sm text-on-surface-variant mb-6 line-clamp-3">Learn how to maintain SEO equity when shortening links and how to structure your 301 redirects to ensure maximum crawler efficiency and link juice transfer.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<a class="text-primary font-label-bold flex items-center gap-1 hover:underline" href="#">
+                                    Read More
+                                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Blog Card 2 -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant blog-card-shadow">
+<div class="h-52 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="Abstract digital representation of financial growth with glowing green lines forming an upward trend. Minimalist and corporate style with a deep navy background and bright emerald accents representing monetization success." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJK_dfGBtJFPThOFyGSdOWnFxoci9Sw75FI42StuX9hdv3KVJWSUiSIXGBzSyLOr-swCOdkDR7w5s-TyKgzCw6Ryt_DPEN0Qdqn5_gbIsAGIjf11aujyljVMPQHU5Ny3ot8zV_UPz-6asxlZyOJ7uMGI058-QI5GRilL9yw31Dn_rs1PSL2soIO5kWwFwtyFFrSAHmguDVzDQdeI9wqlnXz8QV2yxco2lZeKrFp6fC0L1zirXB8Smj9w"/>
+</div>
+<div class="p-stack-md flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-label-mono font-label-mono rounded-full uppercase tracking-wider">Monetization</span>
+<span class="text-body-sm text-on-surface-variant">8 min read</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-3 line-clamp-2">5 Strategies to Double Your Click-Through Earnings</h2>
+<p class="text-body-sm text-on-surface-variant mb-6 line-clamp-3">Uncover the data-driven methods used by top-tier publishers to optimize their ad placements and link bridges for maximum revenue without sacrificing user experience.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<a class="text-primary font-label-bold flex items-center gap-1 hover:underline" href="#">
+                                    Read More
+                                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Blog Card 3 -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant blog-card-shadow">
+<div class="h-52 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="A macro shot of a sophisticated mechanical keyboard and a high-resolution tablet showing code snippets and product roadmap diagrams. The mood is precise and tech-focused with primary blue and white accents, highlighting a product update theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_DSn9aLctXD0MSsFSGdpoqWTVZCfU5b1Xr8CkfSq9Uu5Y1vBbdNBaMlkqAFSFn6JMu2fXb7Z30AyTRNWTBMb414DKJo0kEDo9xzkTfjGSgpGcgPbvMa0jm6q4nKJQjAijZAbxTqmOXczw0Ywo2ZhiCCGkE6jHNzAD2eOz5sVkdZiDZ_W3YxASDSjFqiNNmI6rB8_vK1HuwvvWTyD5pF_DpFRZJPTx-Azl2PUac_pHCHrHkU7rAaJZ2g"/>
+</div>
+<div class="p-stack-md flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant text-label-mono font-label-mono rounded-full uppercase tracking-wider">Product Updates</span>
+<span class="text-body-sm text-on-surface-variant">3 min read</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-3 line-clamp-2">Introducing Real-Time Analytics and API v2.4</h2>
+<p class="text-body-sm text-on-surface-variant mb-6 line-clamp-3">Explore the new features in our latest dashboard update, including millisecond-accurate tracking and enhanced developer documentation for global scalability.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<a class="text-primary font-label-bold flex items-center gap-1 hover:underline" href="#">
+                                    Read More
+                                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Blog Card 4 -->
+<article class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant blog-card-shadow">
+<div class="h-52 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="A group of diverse professionals in a sleek, glass-walled conference room collaborating on a digital strategy displayed on a large screen. High-key lighting, minimalist furniture, and a dominant color palette of white, blue, and light grey." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzXoN1XzdU27FXr6Tr5Z3qZrNPZvQERL_32EgND98xJaFvp-oOd_x1GPxNpwcpaO3ZjVH6gH5OZPlI8v5VyaHhQhoOFNi_Hvm4_IMdPKkfSQz7FlScx4nJfQuhiFB_eTg624CI-SmjFRLcDGHoqkei1qHv0IeAEzZO9MxFfI0GJfoCBd5uERIHK5mozOFotUIh9W44d-A5t_SSfOFYA3x0RXsasif_IH6yMNrOWOlGqOtSjZvnIMQbNg"/>
+</div>
+<div class="p-stack-md flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-label-mono font-label-mono rounded-full uppercase tracking-wider">SEO</span>
+<span class="text-body-sm text-on-surface-variant">6 min read</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-3 line-clamp-2">The Impact of Brand Keywords in Shortened URLs</h2>
+<p class="text-body-sm text-on-surface-variant mb-6 line-clamp-3">How custom domains and keyword-rich slugs can increase trust and improve your ranking for competitive niche terms in search engines.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<a class="text-primary font-label-bold flex items-center gap-1 hover:underline" href="#">
+                                    Read More
+                                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-stack-lg flex justify-center items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-on-primary font-label-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-variant transition-colors font-label-bold">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-variant transition-colors font-label-bold">3</button>
+<span class="text-on-surface-variant px-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Sidebar -->
+<aside class="w-full lg:w-80 flex flex-col gap-gutter">
+<!-- Search Articles -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant blog-card-shadow">
+<h3 class="text-label-bold font-label-bold text-on-surface uppercase tracking-wider mb-4">Search Articles</h3>
+<div class="relative">
+<input class="w-full pl-10 pr-4 py-3 rounded-lg border border-outline bg-surface-container-low focus:border-primary focus:ring-1 focus:ring-primary transition-all text-body-sm" placeholder="Keywords..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+</div>
+</div>
+<!-- Popular Posts -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant blog-card-shadow">
+<h3 class="text-label-bold font-label-bold text-on-surface uppercase tracking-wider mb-4">Popular Posts</h3>
+<div class="flex flex-col gap-6">
+<a class="group flex gap-4" href="#">
+<div class="w-16 h-16 rounded-lg bg-surface-variant flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of a stylized compass on a map with glowing digital paths, representing link tracking and routing. Corporate blue aesthetic with high-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtXgCF7_u5pAX0SDVaTofq7NKliXYQC1cbtbl2NdhH5paJ0jenDG8S8KGP0TkHr-i8nnhfkfXSP7MJml_En8RnodH2SZK6KQsc5b1Q-3lJQPYkZr4ONqE7RjSotQrll2Q78yiRGBRuKxKWnMyu-Ccojkzo1qcVXnAV3DX-6A1NUj5nNwOl93yRYC7NacIor8UirGwc7xyrKep5jk8f06ahqErY3J_yiKW8V_ZAfDnW3UguGWupnoxe8g"/>
+</div>
+<div class="flex-1">
+<h4 class="text-body-sm font-label-bold text-on-surface group-hover:text-primary transition-colors line-clamp-2">How to Track Global Link Traffic</h4>
+<p class="text-[12px] text-on-surface-variant mt-1">Oct 12, 2024 • 1.2k views</p>
+</div>
+</a>
+<a class="group flex gap-4" href="#">
+<div class="w-16 h-16 rounded-lg bg-surface-variant flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Macro of a glass hourglass with blue glowing sand, symbolizing efficiency and time-saving tools. Minimalist and corporate styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnRNL3R484Z67F1glnqWyp65dfaz1GgYDoUISbyd6fh8CKPFhEWtQgaPbeorDln0pYO0v19MXc5QRKMfnFXwYLnsB_WFaXpu07UZY2yi9LVZEQ_xwlad2jFKTebs4ISqGuanOZ5nZo8I5iBq-rhRRve2KgJSMQIE6RT3E8eZWKFQXlV9l7pwRafI8T4GrZQNtuLpAAlag5Zoh3xBM-CHOn8ZWAzFfJzjQZYjli54FAjPRaV8Z8iP5m3g"/>
+</div>
+<div class="flex-1">
+<h4 class="text-body-sm font-label-bold text-on-surface group-hover:text-primary transition-colors line-clamp-2">Scaling Your Link API for Enterprise</h4>
+<p class="text-[12px] text-on-surface-variant mt-1">Oct 08, 2024 • 980 views</p>
+</div>
+</a>
+<a class="group flex gap-4" href="#">
+<div class="w-16 h-16 rounded-lg bg-surface-variant flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Minimalist abstract representation of a network shield, protecting digital assets with glowing security nodes. Corporate navy and white palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfuQBp2ivWfUP26Tq00NG5gtuDrF6IWraSOIU_Cml1e_i3ZDHelL2rwyibKGjw93CgQbpA1wBZczrspjukUgna-GuCfPLUFn9ApebGM-asMscUjIqIb6SKNvTsjNLuHQmsOoUFCVsWCQR5HFYPa4oZrowetkCUHRgRyKuQN_aC7TqwXHDYfRTdEPrgx1kf7RpqrAgt573XkUMWwGQuBdGR8qbhktxqAjA7Swpydfq57yc_HLzDu-ZNIQ"/>
+</div>
+<div class="flex-1">
+<h4 class="text-body-sm font-label-bold text-on-surface group-hover:text-primary transition-colors line-clamp-2">Security Best Practices for Redirects</h4>
+<p class="text-[12px] text-on-surface-variant mt-1">Sep 29, 2024 • 850 views</p>
+</div>
+</a>
+</div>
+</div>
+<!-- CTA Card -->
+<div class="bg-primary-container p-8 rounded-xl relative overflow-hidden text-on-primary-container">
+<div class="absolute -right-12 -top-12 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<h3 class="text-headline-sm font-headline-sm mb-4">Start Shortening Now</h3>
+<p class="text-body-sm mb-6 text-on-primary-container/80">Join 50,000+ creators and developers who manage their links with ShortenIt.</p>
+<button class="w-full bg-white text-primary px-6 py-3 rounded-lg font-label-bold hover:bg-surface-container-low transition-colors active:scale-95">Get Started for Free</button>
+</div>
+</div>
+<!-- Categories List -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant blog-card-shadow">
+<h3 class="text-label-bold font-label-bold text-on-surface uppercase tracking-wider mb-4">Categories</h3>
+<ul class="flex flex-col gap-3">
+<li>
+<a class="flex justify-between items-center text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span>SEO &amp; Tracking</span>
+<span class="px-2 py-0.5 bg-surface-variant rounded text-[11px] font-bold">12</span>
+</a>
+</li>
+<li>
+<a class="flex justify-between items-center text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span>Monetization Tips</span>
+<span class="px-2 py-0.5 bg-surface-variant rounded text-[11px] font-bold">8</span>
+</a>
+</li>
+<li>
+<a class="flex justify-between items-center text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span>Case Studies</span>
+<span class="px-2 py-0.5 bg-surface-variant rounded text-[11px] font-bold">5</span>
+</a>
+</li>
+<li>
+<a class="flex justify-between items-center text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span>Platform Updates</span>
+<span class="px-2 py-0.5 bg-surface-variant rounded text-[11px] font-bold">14</span>
+</a>
+</li>
+</ul>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline full-width">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="flex flex-col gap-2 mb-6 md:mb-0 text-center md:text-left">
+<div class="text-label-bold font-label-bold text-primary dark:text-primary-fixed-dim">ShortenIt</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-xs">Precision link management and high-yield monetization for the modern web.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 mb-6 md:mb-0">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim opacity transition-all duration-200 text-label-mono font-label-mono" href="#">Legal</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim opacity transition-all duration-200 text-label-mono font-label-mono" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim opacity transition-all duration-200 text-label-mono font-label-mono" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim opacity transition-all duration-200 text-label-mono font-label-mono" href="#">Contact</a>
+</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">
+                © 2024 ShortenIt. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        // Simple search input interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        if (searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('scale-[1.02]');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('scale-[1.02]');
+            });
+        }
+
+        // Article card hover effects logic (if needed beyond CSS)
+        document.querySelectorAll('article').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential micro-interaction
+            });
+        });
+    </script>
+</body></html>
