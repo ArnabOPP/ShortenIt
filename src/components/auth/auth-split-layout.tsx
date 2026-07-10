@@ -1,7 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Link as LinkIcon, Gauge, Radar } from "lucide-react";
 
-export function AuthSplitLayout({ children }: { children: React.ReactNode }) {
+export function AuthSplitLayout({
+  children,
+  imageSrc,
+  imageCaption,
+}: {
+  children: React.ReactNode;
+  imageSrc: string;
+  imageCaption: string;
+}) {
   return (
     <div className="grid min-h-dvh md:grid-cols-2">
       <div className="hidden flex-col justify-center gap-8 bg-surface-container-low px-12 py-16 md:flex">
@@ -30,6 +39,12 @@ export function AuthSplitLayout({ children }: { children: React.ReactNode }) {
               <p className="text-xs opacity-80">Real-time tracking</p>
             </div>
           </div>
+        </div>
+        <div className="relative h-48 overflow-hidden rounded-xl border border-outline-variant/30">
+          <Image src={imageSrc} alt={imageCaption} fill sizes="400px" className="object-cover" />
+          <span className="absolute bottom-3 left-3 rounded-md bg-inverse-surface/80 px-2 py-1 text-xs font-medium text-inverse-on-surface">
+            {imageCaption}
+          </span>
         </div>
       </div>
       <div className="flex items-center justify-center bg-background px-6 py-16">

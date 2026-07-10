@@ -6,7 +6,10 @@ import { isClerkConfigured } from "@/lib/clerk";
 
 export default function SignUpPage() {
   return (
-    <AuthSplitLayout>
+    <AuthSplitLayout
+      imageSrc="/images/signup-hero.jpg"
+      imageCaption="Grow with data-driven link management"
+    >
       {isClerkConfigured ? (
         <SignUp appearance={clerkAppearance} />
       ) : (

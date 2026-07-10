@@ -78,7 +78,24 @@ export async function getRecentLinks(userId: string, limit = 5): Promise<RecentL
 }
 
 export async function getLinkBySlug(slug: string): Promise<Link | null> {
-  if (!isDbConfigured) return null;
+  if (!isDbConfigured) {
+    // Demo mode: only a fixed "demo" slug resolves, so the redirect/interstitial
+    // flow is previewable without a database. Everything else still 404s.
+    if (slug === "demo") {
+      return {
+        id: "demo",
+        ownerId: "demo-user",
+        slug: "demo",
+        targetUrl: "https://example.com/demo-destination",
+        domain: "short.it",
+        adMode: "monetized",
+        expiresAt: null,
+        disabled: false,
+        createdAt: new Date(),
+      };
+    }
+    return null;
+  }
   const rows = await db.select().from(links).where(eq(links.slug, slug)).limit(1);
   return rows[0] ?? null;
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BarChart3, QrCode, Globe, Check } from "lucide-react";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
@@ -24,6 +25,30 @@ const features = [
     title: "Branded Domains",
     description:
       "Increase trust and CTR by using your own custom domain names for all shortened links.",
+  },
+];
+
+const testimonials = [
+  {
+    name: "Sarah Jenkins",
+    role: "Content Creator",
+    avatar: "/images/testimonial-sarah-jenkins.jpg",
+    quote:
+      "ShortenIt transformed how I monetize my bio links. The custom domains added so much professionalism to my brand, and the revenue tracking is pinpoint accurate.",
+  },
+  {
+    name: "David Chen",
+    role: "Affiliate Marketer",
+    avatar: "/images/testimonial-david-chen.jpg",
+    quote:
+      "The analytics are where ShortenIt really shines. I can see exactly which social platforms are driving the highest quality traffic. It's a game changer for my ROI.",
+  },
+  {
+    name: "Elena Rodriguez",
+    role: "SaaS Founder",
+    avatar: "/images/testimonial-elena-rodriguez.jpg",
+    quote:
+      "Integration was seamless. We use their API for our enterprise link management and the uptime has been 100% over the last year. Highly recommended.",
   },
 ];
 
@@ -113,6 +138,34 @@ export default function HomePage() {
             <Card className="flex h-72 items-center justify-center bg-surface-container-high p-8">
               <span className="text-sm text-on-surface-variant">Live dashboard preview</span>
             </Card>
+          </div>
+        </section>
+
+        <section className="py-20">
+          <div className="mx-auto max-w-6xl px-6">
+            <h2 className="mb-12 text-center font-display text-3xl font-bold text-on-surface">
+              Loved by Performance Marketers
+            </h2>
+            <div className="grid gap-6 md:grid-cols-3">
+              {testimonials.map((t) => (
+                <Card key={t.name} className="p-6">
+                  <div className="mb-4 flex items-center gap-3">
+                    <Image
+                      src={t.avatar}
+                      alt={t.name}
+                      width={56}
+                      height={56}
+                      className="h-14 w-14 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="font-display font-semibold text-on-surface">{t.name}</p>
+                      <p className="text-xs text-on-surface-variant">{t.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-on-surface-variant">&ldquo;{t.quote}&rdquo;</p>
+                </Card>
+              ))}
+            </div>
           </div>
         </section>
 

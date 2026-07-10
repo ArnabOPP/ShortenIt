@@ -6,7 +6,10 @@ import { isClerkConfigured } from "@/lib/clerk";
 
 export default function LoginPage() {
   return (
-    <AuthSplitLayout>
+    <AuthSplitLayout
+      imageSrc="/images/login-dashboard-preview.jpg"
+      imageCaption="Enterprise Analytics Dashboard"
+    >
       {isClerkConfigured ? (
         <SignIn appearance={clerkAppearance} />
       ) : (
