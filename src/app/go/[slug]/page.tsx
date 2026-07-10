@@ -11,7 +11,7 @@ export default async function GoPage({ params }: { params: Promise<{ slug: strin
     notFound();
   }
 
-  await recordClick(link.id, {});
+  await recordClick(link.id, { adMode: "monetized" });
 
   return <Interstitial targetUrl={link.targetUrl} />;
 }

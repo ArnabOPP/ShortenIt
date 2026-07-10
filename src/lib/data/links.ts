@@ -1,8 +1,30 @@
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, inArray, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { links, clicks } from "@/db/schema";
 import { isDbConfigured } from "@/lib/env";
 import type { Link } from "@/db/schema";
+
+type ClickStat = { clicks: number; earnings: number };
+
+async function getClickStatsByLinkIds(linkIds: string[]): Promise<Map<string, ClickStat>> {
+  if (linkIds.length === 0) return new Map();
+
+  const rows = await db
+    .select({
+      linkId: clicks.linkId,
+      clicks: sql<number>`count(*)`.as("click_count"),
+      earnings: sql<number>`coalesce(sum(${clicks.earnings}), 0)`.as("total_earnings"),
+    })
+    .from(clicks)
+    .where(inArray(clicks.linkId, linkIds))
+    .groupBy(clicks.linkId);
+
+  const map = new Map<string, ClickStat>();
+  for (const row of rows) {
+    map.set(row.linkId, { clicks: Number(row.clicks), earnings: Number(row.earnings) });
+  }
+  return map;
+}
 
 export type DashboardStats = {
   totalLinks: number;
@@ -45,15 +67,19 @@ export async function getDashboardStats(userId: string): Promise<DashboardStats>
     return { totalLinks: 0, totalClicks: 0, earnings: 0, avgCpm: 0 };
   }
 
-  const allClicks = await db.select().from(clicks);
-  const relevant = allClicks.filter((c) => linkIds.includes(c.linkId));
-  const earnings = relevant.reduce((sum, c) => sum + Number(c.earnings ?? 0), 0);
+  const statsMap = await getClickStatsByLinkIds(linkIds);
+  let totalClicks = 0;
+  let earnings = 0;
+  for (const stat of statsMap.values()) {
+    totalClicks += stat.clicks;
+    earnings += stat.earnings;
+  }
 
   return {
     totalLinks: userLinks.length,
-    totalClicks: relevant.length,
+    totalClicks,
     earnings,
-    avgCpm: relevant.length > 0 ? (earnings / relevant.length) * 1000 : 0,
+    avgCpm: totalClicks > 0 ? (earnings / totalClicks) * 1000 : 0,
   };
 }
 
@@ -67,14 +93,19 @@ export async function getRecentLinks(userId: string, limit = 5): Promise<RecentL
     .orderBy(desc(links.createdAt))
     .limit(limit);
 
-  return rows.map((l) => ({
-    id: l.id,
-    slug: l.slug,
-    targetUrl: l.targetUrl,
-    clicks: 0,
-    earnings: 0,
-    createdAt: l.createdAt,
-  }));
+  const statsMap = await getClickStatsByLinkIds(rows.map((l) => l.id));
+
+  return rows.map((l) => {
+    const stat = statsMap.get(l.id);
+    return {
+      id: l.id,
+      slug: l.slug,
+      targetUrl: l.targetUrl,
+      clicks: stat?.clicks ?? 0,
+      earnings: stat?.earnings ?? 0,
+      createdAt: l.createdAt,
+    };
+  });
 }
 
 export async function getLinkBySlug(slug: string): Promise<Link | null> {
@@ -126,12 +157,14 @@ export async function getLinksTable(userId: string): Promise<LinkRow[]> {
   if (!isDbConfigured) return DEMO_TABLE_LINKS;
 
   const rows = await db.select().from(links).where(eq(links.ownerId, userId)).orderBy(desc(links.createdAt));
+  const statsMap = await getClickStatsByLinkIds(rows.map((l) => l.id));
+
   return rows.map((l) => ({
     id: l.id,
     slug: l.slug,
     targetUrl: l.targetUrl,
     adMode: l.adMode,
-    clicks: 0,
+    clicks: statsMap.get(l.id)?.clicks ?? 0,
     createdAt: l.createdAt,
   }));
 }

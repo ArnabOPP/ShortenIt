@@ -19,6 +19,7 @@ export async function GET(request: NextRequest, ctx: RouteContext<"/[slug]">) {
   await recordClick(link.id, {
     referrer: request.headers.get("referer") ?? undefined,
     device: request.headers.get("user-agent") ?? undefined,
+    adMode: "direct",
   });
 
   return NextResponse.redirect(link.targetUrl);
