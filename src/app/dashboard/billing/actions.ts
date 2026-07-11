@@ -8,7 +8,7 @@ import { users } from "@/db/schema";
 import { isDbConfigured } from "@/lib/env";
 import { razorpay, isRazorpayConfigured, RAZORPAY_PLAN_ID_PRO } from "@/lib/razorpay";
 import { ensureRazorpayCustomer } from "@/lib/data/billing";
-import { requireUserId } from "@/lib/auth";
+import { requireUserId, getDisplayUser } from "@/lib/auth";
 
 export type CreateSubscriptionState = {
   subscriptionId?: string;
@@ -31,7 +31,8 @@ export async function createSubscriptionAction(): Promise<CreateSubscriptionStat
     return { error: "Could not resolve your account email." };
   }
 
-  await ensureRazorpayCustomer(userId, email);
+  const displayUser = await getDisplayUser();
+  await ensureRazorpayCustomer(userId, email, displayUser.fullName);
 
   const subscription = await razorpay.subscriptions.create({
     plan_id: RAZORPAY_PLAN_ID_PRO,

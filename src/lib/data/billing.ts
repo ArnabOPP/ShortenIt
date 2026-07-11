@@ -44,14 +44,19 @@ export async function checkLinkQuota(userId: string): Promise<QuotaCheck> {
   return { allowed: used < FREE_PLAN_MONTHLY_LINK_LIMIT, used, limit: FREE_PLAN_MONTHLY_LINK_LIMIT, plan };
 }
 
-export async function ensureRazorpayCustomer(userId: string, email: string): Promise<string> {
+export async function ensureRazorpayCustomer(userId: string, email: string, name: string): Promise<string> {
   const rows = await db.select().from(users).where(eq(users.id, userId)).limit(1);
   const existing = rows[0]?.razorpayCustomerId;
   if (existing) return existing;
 
   if (!razorpay) throw new Error("Razorpay is not configured");
 
-  const customer = await razorpay.customers.create({ name: email, email, fail_existing: 0 });
+  // Razorpay validates `name` against a person/business-name format — an
+  // email address or empty string gets rejected with a 400, so fall back to
+  // a generic name when Clerk hasn't captured a real one yet.
+  const safeName = /^[a-zA-Z][a-zA-Z .'-]{1,49}$/.test(name) ? name : "ShortenIt Customer";
+
+  const customer = await razorpay.customers.create({ name: safeName, email, fail_existing: 0 });
   await db.update(users).set({ razorpayCustomerId: customer.id }).where(eq(users.id, userId));
   return customer.id;
 }
