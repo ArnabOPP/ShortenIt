@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
+import { AdsterraNativeBanner } from "@/components/ads/adsterra-native-banner";
 import { getBlogPost, blogPosts } from "@/lib/blog-posts";
 
 export function generateStaticParams() {
@@ -50,7 +51,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             ))}
           </div>
 
-          <div className="mt-12 rounded-2xl bg-surface-container-low p-6 text-center">
+          <div className="mt-12">
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-on-surface-variant">Advertisement</p>
+            <AdsterraNativeBanner />
+          </div>
+
+          <div className="mt-8 rounded-2xl bg-surface-container-low p-6 text-center">
             <p className="font-display font-semibold text-on-surface">Ready to try it yourself?</p>
             <Link href="/" className="mt-2 inline-block text-sm font-medium text-primary hover:underline">
               Shorten your first link →
