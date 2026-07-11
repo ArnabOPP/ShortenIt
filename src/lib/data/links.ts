@@ -1,8 +1,12 @@
+import { nanoid } from "nanoid";
 import { desc, eq, inArray, sql } from "drizzle-orm";
 import { db } from "@/db";
-import { links, clicks } from "@/db/schema";
+import { links, clicks, users } from "@/db/schema";
 import { isDbConfigured } from "@/lib/env";
+import { isValidUrl } from "@/lib/url";
 import type { Link } from "@/db/schema";
+
+const ANONYMOUS_OWNER_ID = "anonymous";
 
 type ClickStat = { clicks: number; earnings: number };
 
@@ -167,4 +171,47 @@ export async function getLinksTable(userId: string): Promise<LinkRow[]> {
     clicks: statsMap.get(l.id)?.clicks ?? 0,
     createdAt: l.createdAt,
   }));
+}
+
+export type CreateAnonymousLinkResult =
+  | { ok: true; slug: string }
+  | { ok: false; error: string };
+
+/**
+ * Instant, no-auth shortening for the homepage hero form — mirrors the UX of
+ * bit.ly/tinyurl (shorten first, ask to sign up only to track/manage later).
+ * Anonymous links are owned by a reserved system user and default to
+ * "direct" ad mode since there's no dashboard yet to pick monetization.
+ */
+export async function createAnonymousLink(targetUrl: string): Promise<CreateAnonymousLinkResult> {
+  if (!isValidUrl(targetUrl)) {
+    return { ok: false, error: "Enter a valid URL, including https://" };
+  }
+
+  if (!isDbConfigured) {
+    // Demo mode: fabricate a slug for display purposes only — it won't
+    // actually resolve since nothing is persisted without a database.
+    return { ok: true, slug: nanoid(7) };
+  }
+
+  await db
+    .insert(users)
+    .values({ id: ANONYMOUS_OWNER_ID, email: "anonymous@shortenit.local" })
+    .onConflictDoNothing();
+
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const slug = nanoid(7);
+    const existing = await db.select().from(links).where(eq(links.slug, slug)).limit(1);
+    if (existing.length > 0) continue;
+
+    await db.insert(links).values({
+      ownerId: ANONYMOUS_OWNER_ID,
+      slug,
+      targetUrl,
+      adMode: "direct",
+    });
+    return { ok: true, slug };
+  }
+
+  return { ok: false, error: "Couldn't generate a unique link right now — please try again." };
 }

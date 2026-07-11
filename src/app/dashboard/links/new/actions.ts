@@ -7,17 +7,9 @@ import { db } from "@/db";
 import { links } from "@/db/schema";
 import { isDbConfigured } from "@/lib/env";
 import { requireUserId } from "@/lib/auth";
+import { isValidUrl } from "@/lib/url";
 
 export type CreateLinkState = { error?: string };
-
-function isValidUrl(value: string) {
-  try {
-    const url = new URL(value);
-    return url.protocol === "http:" || url.protocol === "https:";
-  } catch {
-    return false;
-  }
-}
 
 export async function createLinkAction(
   _prevState: CreateLinkState,
