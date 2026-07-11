@@ -1,9 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, Copy, MoreVertical } from "lucide-react";
+import { Search, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { LinkRow } from "@/lib/data/links";
+import { LinkRowActions } from "@/components/dashboard/link-row-actions";
 
 export function LinksTable({ links, appUrl }: { links: LinkRow[]; appUrl: string }) {
   const [query, setQuery] = useState("");
@@ -60,8 +61,21 @@ export function LinksTable({ links, appUrl }: { links: LinkRow[]; appUrl: string
           </thead>
           <tbody>
             {filtered.map((link) => (
-              <tr key={link.id} className="border-b border-outline-variant/10 hover:bg-primary/5">
-                <td className="px-6 py-4 font-medium text-primary">/{link.slug}</td>
+              <tr
+                key={link.id}
+                className={cn(
+                  "border-b border-outline-variant/10 hover:bg-primary/5",
+                  link.disabled && "opacity-50"
+                )}
+              >
+                <td className="px-6 py-4 font-medium text-primary">
+                  /{link.slug}
+                  {link.disabled && (
+                    <span className="ml-2 rounded-full bg-error-container px-2 py-0.5 text-xs font-medium text-on-error-container">
+                      Disabled
+                    </span>
+                  )}
+                </td>
                 <td className="max-w-[220px] truncate px-6 py-4 text-on-surface-variant">{link.targetUrl}</td>
                 <td className="px-6 py-4">
                   <span
@@ -88,9 +102,7 @@ export function LinksTable({ links, appUrl }: { links: LinkRow[]; appUrl: string
                     >
                       <Copy className="h-4 w-4" />
                     </button>
-                    <button className="rounded-md p-1.5 text-on-surface-variant hover:bg-surface-container-low">
-                      <MoreVertical className="h-4 w-4" />
-                    </button>
+                    <LinkRowActions linkId={link.id} disabled={link.disabled} />
                   </div>
                 </td>
               </tr>

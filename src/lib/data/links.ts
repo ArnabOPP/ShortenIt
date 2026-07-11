@@ -147,14 +147,15 @@ export type LinkRow = {
   adMode: "direct" | "monetized";
   clicks: number;
   createdAt: Date;
+  disabled: boolean;
 };
 
 const DEMO_TABLE_LINKS: LinkRow[] = [
-  { id: "1", slug: "summer-sale-2024", targetUrl: "https://store.example.com/summer-clearance", adMode: "monetized", clicks: 1402, createdAt: new Date("2024-05-12") },
-  { id: "2", slug: "product-demo-v2", targetUrl: "https://vimeo.com/721984021", adMode: "direct", clicks: 89, createdAt: new Date("2024-05-10") },
-  { id: "3", slug: "app-referral", targetUrl: "https://play.google.com/store/apps/details", adMode: "monetized", clicks: 24510, createdAt: new Date("2024-04-28") },
-  { id: "4", slug: "blog-post-01", targetUrl: "https://shortenit.pro/blog/growth-hacking", adMode: "direct", clicks: 312, createdAt: new Date("2024-04-22") },
-  { id: "5", slug: "dev-docs", targetUrl: "https://docs.shortenit.pro/getting-started", adMode: "monetized", clicks: 1055, createdAt: new Date("2024-04-15") },
+  { id: "1", slug: "summer-sale-2024", targetUrl: "https://store.example.com/summer-clearance", adMode: "monetized", clicks: 1402, createdAt: new Date("2024-05-12"), disabled: false },
+  { id: "2", slug: "product-demo-v2", targetUrl: "https://vimeo.com/721984021", adMode: "direct", clicks: 89, createdAt: new Date("2024-05-10"), disabled: false },
+  { id: "3", slug: "app-referral", targetUrl: "https://play.google.com/store/apps/details", adMode: "monetized", clicks: 24510, createdAt: new Date("2024-04-28"), disabled: false },
+  { id: "4", slug: "blog-post-01", targetUrl: "https://shortenit.pro/blog/growth-hacking", adMode: "direct", clicks: 312, createdAt: new Date("2024-04-22"), disabled: false },
+  { id: "5", slug: "dev-docs", targetUrl: "https://docs.shortenit.pro/getting-started", adMode: "monetized", clicks: 1055, createdAt: new Date("2024-04-15"), disabled: false },
 ];
 
 export async function getLinksTable(userId: string): Promise<LinkRow[]> {
@@ -170,6 +171,7 @@ export async function getLinksTable(userId: string): Promise<LinkRow[]> {
     adMode: l.adMode,
     clicks: statsMap.get(l.id)?.clicks ?? 0,
     createdAt: l.createdAt,
+    disabled: l.disabled,
   }));
 }
 
