@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { isClerkConfigured } from "@/lib/clerk";
-import { AdsterraSocialBar } from "@/components/ads/adsterra-social-bar";
-import { AdsterraPopunder } from "@/components/ads/adsterra-popunder";
 import "./globals.css";
 
 const displayFont = Plus_Jakarta_Sans({
@@ -48,8 +46,6 @@ function Shell({ children }: { children: React.ReactNode }) {
       className={`${displayFont.variable} ${bodyFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-on-surface font-body">
-        <AdsterraSocialBar />
-        <AdsterraPopunder />
         {children}
       </body>
     </html>

@@ -8,9 +8,6 @@ export const ADSTERRA = {
   banner160x600: { adKey: "0307cfb2149cf3a35b7afd538c67484e", width: 160, height: 600 },
   banner300x250: { adKey: "3dafa0043c1cf51c2875942c93640a3c", width: 300, height: 250 },
 
-  socialBarSrc: "https://pl30319578.effectivecpmnetwork.com/d1/e2/72/d1e2728f6550315af658d3fa05431db2.js",
-  popunderSrc: "https://pl30319581.effectivecpmnetwork.com/e8/92/3a/e8923aac30002856ab5c651de897cc71.js",
-
   nativeBannerSrc: "https://pl30319579.effectivecpmnetwork.com/dab03c81d240253ebb5a2c8a25a41dee/invoke.js",
   nativeBannerContainerId: "container-dab03c81d240253ebb5a2c8a25a41dee",
 

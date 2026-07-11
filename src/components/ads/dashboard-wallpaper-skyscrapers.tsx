@@ -7,5 +7,5 @@ export async function DashboardWallpaperSkyscrapers() {
   const userId = await requireUserId();
   const { plan } = await getBillingInfo(userId);
   if (plan === "pro") return null;
-  return <WallpaperSkyscrapers />;
+  return <WallpaperSkyscrapers variant="dashboard" />;
 }
