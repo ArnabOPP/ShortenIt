@@ -31,7 +31,7 @@ export default async function DashboardPage() {
         </p>
       </div>
 
-      <DashboardAdBanner variant="leaderboard" />
+      <DashboardAdBanner variant="full-banner" />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard icon={LinkIcon} label="Total Links" value={formatNumber(stats.totalLinks)} delta="+3%" />

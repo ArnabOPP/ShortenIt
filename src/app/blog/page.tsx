@@ -4,7 +4,7 @@ import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { Card } from "@/components/ui/card";
 import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
-import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
+import { PageAdGrid } from "@/components/ads/page-ad-grid";
 import { blogPosts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 export default function BlogIndexPage() {
   return (
     <div className="flex min-h-dvh flex-col">
-      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
+      <PageAdGrid>
         <div className="mx-auto max-w-4xl px-6 py-10">
           <h1 className="font-display text-3xl font-bold text-on-surface">Guides & Blog</h1>
           <p className="mt-2 text-on-surface-variant">
@@ -53,6 +53,7 @@ export default function BlogIndexPage() {
             <InlineAdBanner variant="rectangle" />
           </div>
         </div>
+      </PageAdGrid>
       </main>
       <Footer />
     </div>

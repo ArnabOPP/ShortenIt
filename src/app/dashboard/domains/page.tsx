@@ -19,7 +19,7 @@ export default async function DomainsPage() {
         </p>
       </div>
 
-      <DashboardAdBanner variant="leaderboard" />
+      <DashboardAdBanner variant="full-banner" />
 
       <Card>
         <CardHeader>

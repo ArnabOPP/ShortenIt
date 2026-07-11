@@ -31,7 +31,7 @@ export default async function QrCodesPage() {
         </p>
       </div>
 
-      <DashboardAdBanner variant="leaderboard" />
+      <DashboardAdBanner variant="full-banner" />
 
       {codes.length === 0 ? (
         <Card className="flex flex-col items-center gap-3 p-12 text-center">

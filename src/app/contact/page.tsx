@@ -4,7 +4,7 @@ import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { Card } from "@/components/ui/card";
 import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
-import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
+import { PageAdGrid } from "@/components/ads/page-ad-grid";
 
 export const metadata: Metadata = {
   title: "Contact | ShortenIt",
@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="flex min-h-dvh flex-col">
-      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
+      <PageAdGrid>
         <div className="mx-auto max-w-2xl px-6 py-10 text-center">
           <h1 className="font-display text-3xl font-bold text-on-surface">Contact us</h1>
           <p className="mt-3 text-on-surface-variant">
@@ -57,6 +57,7 @@ export default function ContactPage() {
             <InlineAdBanner variant="rectangle" />
           </div>
         </div>
+      </PageAdGrid>
       </main>
       <Footer />
     </div>

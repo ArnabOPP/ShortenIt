@@ -4,12 +4,26 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, Link as LinkIcon } from "lucide-react";
 import { Sidebar } from "@/components/dashboard/sidebar";
+import { AdsterraBanner } from "@/components/ads/adsterra-banner";
+import { ADSTERRA } from "@/lib/ads/adsterra";
+
+function SkyscraperColumn() {
+  return (
+    <div className="hidden shrink-0 self-start xl:block">
+      <div className="sticky top-24">
+        <AdsterraBanner {...ADSTERRA.banner160x600} />
+      </div>
+    </div>
+  );
+}
 
 export function DashboardShell({
   clerkEnabled,
+  showAds = false,
   children,
 }: {
   clerkEnabled: boolean;
+  showAds?: boolean;
   children: React.ReactNode;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -34,7 +48,11 @@ export function DashboardShell({
         </header>
 
         <main className="flex-1 overflow-x-hidden">
-          <div className="mx-auto max-w-[1280px] px-4 py-6 sm:px-6 md:px-8 md:py-8">{children}</div>
+          <div className="mx-auto flex max-w-[1660px] gap-4 px-4 py-6 sm:px-6 md:px-8 md:py-8">
+            {showAds && <SkyscraperColumn />}
+            <div className="mx-auto w-full min-w-0 max-w-[1280px]">{children}</div>
+            {showAds && <SkyscraperColumn />}
+          </div>
         </main>
       </div>
     </div>

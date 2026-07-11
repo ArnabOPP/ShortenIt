@@ -5,7 +5,7 @@ import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { AdsterraNativeBanner } from "@/components/ads/adsterra-native-banner";
 import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
-import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
+import { PageAdGrid } from "@/components/ads/page-ad-grid";
 import { getBlogPost, blogPosts } from "@/lib/blog-posts";
 
 export function generateStaticParams() {
@@ -38,9 +38,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="flex min-h-dvh flex-col">
-      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
+      <PageAdGrid>
         <article className="mx-auto max-w-2xl px-6 py-10">
           <Link href="/blog" className="text-sm font-medium text-primary hover:underline">
             ← Back to Guides
@@ -94,6 +94,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <InlineAdBanner variant="rectangle" />
           </div>
         </article>
+      </PageAdGrid>
       </main>
       <Footer />
     </div>

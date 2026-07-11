@@ -14,7 +14,7 @@ export default function SettingsPage() {
         </p>
       </div>
 
-      <DashboardAdBanner variant="leaderboard" />
+      <DashboardAdBanner variant="full-banner" />
 
       {isClerkConfigured ? (
         <UserProfile

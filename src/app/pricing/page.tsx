@@ -6,7 +6,7 @@ import { Footer } from "@/components/marketing/footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
-import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
+import { PageAdGrid } from "@/components/ads/page-ad-grid";
 
 export const metadata: Metadata = {
   title: "Pricing | ShortenIt",
@@ -93,9 +93,9 @@ function FeatureValue({ value }: { value: string | boolean }) {
 export default function PricingPage() {
   return (
     <div className="flex min-h-dvh flex-col">
-      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
+      <PageAdGrid>
         <section className="mx-auto max-w-4xl px-6 py-10 text-center">
           <h1 className="font-display text-4xl font-bold text-on-surface">
             Choose the plan that fits your growth.
@@ -223,6 +223,7 @@ export default function PricingPage() {
           <InlineAdBanner variant="leaderboard" />
           <InlineAdBanner variant="rectangle" />
         </section>
+      </PageAdGrid>
       </main>
       <Footer />
     </div>

@@ -1,12 +1,16 @@
 import { DashboardShell } from "@/components/dashboard/dashboard-shell";
-import { DashboardWallpaperSkyscrapers } from "@/components/ads/dashboard-wallpaper-skyscrapers";
 import { isClerkConfigured } from "@/lib/clerk";
+import { requireUserId } from "@/lib/auth";
+import { getBillingInfo } from "@/lib/data/billing";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+// Ads are gated to Free-plan users only, honoring the ad-free Pro promise.
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const userId = await requireUserId();
+  const { plan } = await getBillingInfo(userId);
+
   return (
-    <>
-      <DashboardWallpaperSkyscrapers />
-      <DashboardShell clerkEnabled={isClerkConfigured}>{children}</DashboardShell>
-    </>
+    <DashboardShell clerkEnabled={isClerkConfigured} showAds={plan !== "pro"}>
+      {children}
+    </DashboardShell>
   );
 }

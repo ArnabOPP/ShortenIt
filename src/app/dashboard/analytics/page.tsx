@@ -28,7 +28,7 @@ export default async function AnalyticsPage() {
         </p>
       </div>
 
-      <DashboardAdBanner variant="leaderboard" />
+      <DashboardAdBanner variant="full-banner" />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard icon={Link2} label="Total Links" value={stats.totalLinks.toLocaleString()} />

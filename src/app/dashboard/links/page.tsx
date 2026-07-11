@@ -28,7 +28,7 @@ export default async function MyLinksPage() {
         </Link>
       </div>
 
-      <DashboardAdBanner variant="leaderboard" />
+      <DashboardAdBanner variant="full-banner" />
 
       <LinksTable links={links} appUrl={appUrl} />
 

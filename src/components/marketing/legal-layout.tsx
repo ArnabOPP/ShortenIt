@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
-import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
+import { PageAdGrid } from "@/components/ads/page-ad-grid";
 
 export function LegalLayout({
   title,
@@ -14,9 +14,9 @@ export function LegalLayout({
 }) {
   return (
     <div className="flex min-h-dvh flex-col">
-      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
+      <PageAdGrid>
         <div className="mx-auto max-w-3xl px-6 py-10">
           <h1 className="font-display text-3xl font-bold text-on-surface">{title}</h1>
           <p className="mt-2 text-sm text-on-surface-variant">Last updated: {updated}</p>
@@ -35,6 +35,7 @@ export function LegalLayout({
             <InlineAdBanner variant="rectangle" />
           </div>
         </div>
+      </PageAdGrid>
       </main>
       <Footer />
     </div>

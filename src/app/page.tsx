@@ -6,7 +6,7 @@ import { Footer } from "@/components/marketing/footer";
 import { HeroShortenForm } from "@/components/marketing/hero-shorten-form";
 import { DashboardPreview } from "@/components/marketing/dashboard-preview";
 import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
-import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
+import { PageAdGrid } from "@/components/ads/page-ad-grid";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -73,9 +73,9 @@ const steps = [
 export default function HomePage() {
   return (
     <div className="flex min-h-dvh flex-col">
-      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
+      <PageAdGrid>
         <section className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-10 text-center">
           <h1 className="font-display text-4xl font-extrabold tracking-tight text-on-surface sm:text-5xl">
             Shrink Links. <span className="text-primary">Grow Revenue.</span>
@@ -217,6 +217,7 @@ export default function HomePage() {
         <section className="mx-auto max-w-6xl px-6 py-6">
           <InlineAdBanner variant="leaderboard" className="mx-auto" />
         </section>
+      </PageAdGrid>
       </main>
       <Footer />
     </div>

@@ -4,7 +4,7 @@ import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { Card } from "@/components/ui/card";
 import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
-import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
+import { PageAdGrid } from "@/components/ads/page-ad-grid";
 
 const components = [
   { name: "Redirect Engine", description: "Short-link resolution and redirects" },
@@ -16,9 +16,9 @@ const components = [
 export default function ApiStatusPage() {
   return (
     <div className="flex min-h-dvh flex-col">
-      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
+      <PageAdGrid>
         <div className="mx-auto max-w-2xl px-6 py-10">
           <div className="flex items-center gap-3">
             <CheckCircle2 className="h-7 w-7 text-secondary" />
@@ -58,6 +58,7 @@ export default function ApiStatusPage() {
             <InlineAdBanner variant="rectangle" />
           </div>
         </div>
+      </PageAdGrid>
       </main>
       <Footer />
     </div>

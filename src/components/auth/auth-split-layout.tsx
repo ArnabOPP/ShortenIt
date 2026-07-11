@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Link as LinkIcon, Gauge, Radar } from "lucide-react";
 import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
-import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
 
 export function AuthSplitLayout({
   children,
@@ -15,7 +14,6 @@ export function AuthSplitLayout({
 }) {
   return (
     <div className="grid min-h-dvh md:grid-cols-2">
-      <WallpaperSkyscrapers />
       <div className="hidden flex-col justify-center gap-6 bg-surface-container-low px-12 py-10 md:flex">
         <Link href="/" className="flex items-center gap-2 font-display text-xl font-bold text-primary">
           <LinkIcon className="h-5 w-5" strokeWidth={2.5} />
