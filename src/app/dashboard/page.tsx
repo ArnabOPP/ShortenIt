@@ -5,16 +5,7 @@ import { StatCard } from "@/components/dashboard/stat-card";
 import { ClicksChart } from "@/components/dashboard/clicks-chart";
 import { requireUserId, getDisplayUser } from "@/lib/auth";
 import { getDashboardStats, getRecentLinks } from "@/lib/data/links";
-
-const CHART_DATA = [
-  { day: "1 Oct", clicks: 320 },
-  { day: "5 Oct", clicks: 480 },
-  { day: "10 Oct", clicks: 890 },
-  { day: "15 Oct", clicks: 610 },
-  { day: "20 Oct", clicks: 740 },
-  { day: "25 Oct", clicks: 560 },
-  { day: "30 Oct", clicks: 950 },
-];
+import { getClicksOverTime } from "@/lib/data/analytics";
 
 function formatNumber(n: number) {
   if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
@@ -23,10 +14,11 @@ function formatNumber(n: number) {
 
 export default async function DashboardPage() {
   const userId = await requireUserId();
-  const [user, stats, recentLinks] = await Promise.all([
+  const [user, stats, recentLinks, chartData] = await Promise.all([
     getDisplayUser(),
     getDashboardStats(userId),
     getRecentLinks(userId),
+    getClicksOverTime(userId),
   ]);
 
   return (
@@ -51,7 +43,13 @@ export default async function DashboardPage() {
             <CardTitle>Clicks over the last 30 days</CardTitle>
           </CardHeader>
           <CardContent>
-            <ClicksChart data={CHART_DATA} />
+            {chartData.length > 0 ? (
+              <ClicksChart data={chartData} />
+            ) : (
+              <p className="flex h-[280px] items-center justify-center text-sm text-on-surface-variant">
+                No clicks yet — share a link to see activity here.
+              </p>
+            )}
           </CardContent>
         </Card>
 

@@ -68,7 +68,7 @@ export function Sidebar({ clerkEnabled }: { clerkEnabled: boolean }) {
 
       <div className="flex flex-col gap-1 border-t border-outline-variant/20 pt-4">
         <Link
-          href="/help"
+          href="/contact"
           className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-on-surface-variant hover:bg-surface-container-low"
         >
           <HelpCircle className="h-4 w-4" />
