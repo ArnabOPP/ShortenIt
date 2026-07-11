@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { Card } from "@/components/ui/card";
 import { blogPosts } from "@/lib/blog-posts";
+
+export const metadata: Metadata = {
+  title: "Guides & Blog | ShortenIt",
+  description: "Practical notes on link management, QR codes, and getting the most out of your links.",
+};
 
 export default function BlogIndexPage() {
   return (

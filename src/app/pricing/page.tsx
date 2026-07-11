@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, X, ChevronDown } from "lucide-react";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "Pricing | ShortenIt",
+  description:
+    "Simple, transparent pricing for ShortenIt — free forever for 50 links/month, or go Pro for unlimited links, advanced analytics, and custom domains.",
+};
 
 const tiers = [
   {
@@ -28,7 +35,7 @@ const tiers = [
       "Ad-free redirects",
     ],
     cta: "Get Started",
-    href: "/sign-up",
+    href: "/dashboard/billing",
     highlighted: true,
   },
   {

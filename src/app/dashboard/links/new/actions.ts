@@ -8,6 +8,7 @@ import { links } from "@/db/schema";
 import { isDbConfigured } from "@/lib/env";
 import { requireUserId } from "@/lib/auth";
 import { isValidUrl } from "@/lib/url";
+import { checkLinkQuota } from "@/lib/data/billing";
 
 export type CreateLinkState = { error?: string };
 
@@ -34,12 +35,20 @@ export async function createLinkAction(
     redirect("/dashboard/links");
   }
 
+  const ownerId = await requireUserId();
+
+  const quota = await checkLinkQuota(ownerId);
+  if (!quota.allowed) {
+    return {
+      error: `You've hit the Free plan's ${quota.limit} links/month limit. Upgrade to Pro for unlimited links.`,
+    };
+  }
+
   const existing = await db.select().from(links).where(eq(links.slug, slug)).limit(1);
   if (existing.length > 0) {
     return { error: `The slug "${slug}" is already taken.` };
   }
 
-  const ownerId = await requireUserId();
   await db.insert(links).values({
     ownerId,
     slug,

@@ -39,12 +39,18 @@ export async function requireUserId(): Promise<string> {
 
 export async function getDisplayUser() {
   if (!isClerkConfigured) {
-    return { firstName: "Demo", fullName: "Demo User", imageUrl: null as string | null };
+    return {
+      firstName: "Demo",
+      fullName: "Demo User",
+      imageUrl: null as string | null,
+      email: "demo@shortenitpro.dev",
+    };
   }
   const user = await currentUser();
   return {
     firstName: user?.firstName ?? "there",
     fullName: user?.fullName ?? user?.username ?? "Account",
     imageUrl: user?.imageUrl ?? null,
+    email: user?.primaryEmailAddress?.emailAddress ?? user?.emailAddresses?.[0]?.emailAddress ?? "",
   };
 }

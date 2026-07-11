@@ -13,7 +13,10 @@ export const adModeEnum = pgEnum("ad_mode", ["direct", "monetized"]);
 export const users = pgTable("users", {
   id: text("id").primaryKey(), // Clerk user id
   email: text("email").notNull(),
-  plan: text("plan").notNull().default("free"),
+  plan: text("plan").notNull().default("free"), // "free" | "pro"
+  razorpayCustomerId: text("razorpay_customer_id"),
+  razorpaySubscriptionId: text("razorpay_subscription_id"),
+  razorpaySubscriptionStatus: text("razorpay_subscription_status"), // created, active, halted, cancelled, ...
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 

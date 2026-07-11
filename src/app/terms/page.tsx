@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { LegalLayout } from "@/components/marketing/legal-layout";
+
+export const metadata: Metadata = {
+  title: "Terms of Service | ShortenIt",
+  description: "The terms that govern your use of ShortenIt.",
+};
 
 export default function TermsOfServicePage() {
   return (

@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import { Mail, MessageCircle } from "lucide-react";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { Card } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "Contact | ShortenIt",
+  description: "Get in touch with the ShortenIt team for support, billing, or sales questions.",
+};
 
 export default function ContactPage() {
   return (

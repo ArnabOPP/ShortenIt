@@ -16,10 +16,27 @@ const bodyFont = Inter({
   weight: ["400", "500", "600"],
 });
 
+const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://shortenitpro.vercel.app";
+const title = "ShortenIt | Shrink Links. Grow Revenue.";
+const description =
+  "The link shortener that pays you. Turn every click into a high-conversion financial opportunity with precision analytics.";
+
 export const metadata: Metadata = {
-  title: "ShortenIt | Shrink Links. Grow Revenue.",
-  description:
-    "The link shortener that pays you. Turn every click into a high-conversion financial opportunity with precision analytics.",
+  metadataBase: new URL(appUrl),
+  title: { default: title, template: "%s" },
+  description,
+  openGraph: {
+    title,
+    description,
+    url: appUrl,
+    siteName: "ShortenIt",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title,
+    description,
+  },
 };
 
 function Shell({ children }: { children: React.ReactNode }) {

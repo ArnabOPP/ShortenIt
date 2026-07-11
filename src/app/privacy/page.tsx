@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalLayout } from "@/components/marketing/legal-layout";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | ShortenIt",
+  description: "How ShortenIt collects, uses, and protects your data.",
+};
 
 export default function PrivacyPolicyPage() {
   return (
