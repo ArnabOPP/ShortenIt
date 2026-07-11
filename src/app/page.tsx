@@ -4,6 +4,7 @@ import { BarChart3, QrCode, Globe, Check } from "lucide-react";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { HeroShortenForm } from "@/components/marketing/hero-shorten-form";
+import { DashboardPreview } from "@/components/marketing/dashboard-preview";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -135,9 +136,7 @@ export default function HomePage() {
                 ))}
               </ol>
             </div>
-            <Card className="flex h-72 items-center justify-center bg-surface-container-high p-8">
-              <span className="text-sm text-on-surface-variant">Live dashboard preview</span>
-            </Card>
+            <DashboardPreview />
           </div>
         </section>
 
