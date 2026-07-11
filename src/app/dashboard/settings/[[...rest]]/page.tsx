@@ -2,6 +2,7 @@ import { UserProfile } from "@clerk/nextjs";
 import { clerkAppearance } from "@/components/auth/clerk-appearance";
 import { ClerkNotConfigured } from "@/components/auth/clerk-not-configured";
 import { isClerkConfigured } from "@/lib/clerk";
+import { DashboardAdBanner } from "@/components/ads/dashboard-ad-banner";
 
 export default function SettingsPage() {
   return (
@@ -12,6 +13,8 @@ export default function SettingsPage() {
           Manage your profile, security, and connected accounts.
         </p>
       </div>
+
+      <DashboardAdBanner variant="leaderboard" />
 
       {isClerkConfigured ? (
         <UserProfile
@@ -27,6 +30,8 @@ export default function SettingsPage() {
       ) : (
         <ClerkNotConfigured mode="login" />
       )}
+
+      <DashboardAdBanner variant="rectangle" className="mx-auto max-w-sm" />
     </div>
   );
 }

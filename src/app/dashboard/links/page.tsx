@@ -3,6 +3,7 @@ import { Plus } from "lucide-react";
 import { requireUserId } from "@/lib/auth";
 import { getLinksTable } from "@/lib/data/links";
 import { LinksTable } from "@/components/dashboard/links-table";
+import { DashboardAdBanner } from "@/components/ads/dashboard-ad-banner";
 
 export default async function MyLinksPage() {
   const userId = await requireUserId();
@@ -27,7 +28,11 @@ export default async function MyLinksPage() {
         </Link>
       </div>
 
+      <DashboardAdBanner variant="leaderboard" />
+
       <LinksTable links={links} appUrl={appUrl} />
+
+      <DashboardAdBanner variant="rectangle" className="mx-auto max-w-sm" />
     </div>
   );
 }

@@ -5,6 +5,8 @@ import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
+import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
 
 export const metadata: Metadata = {
   title: "Pricing | ShortenIt",
@@ -91,9 +93,10 @@ function FeatureValue({ value }: { value: string | boolean }) {
 export default function PricingPage() {
   return (
     <div className="flex min-h-dvh flex-col">
+      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
-        <section className="mx-auto max-w-4xl px-6 py-16 text-center">
+        <section className="mx-auto max-w-4xl px-6 py-10 text-center">
           <h1 className="font-display text-4xl font-bold text-on-surface">
             Choose the plan that fits your growth.
           </h1>
@@ -103,7 +106,12 @@ export default function PricingPage() {
           </p>
         </section>
 
-        <section className="mx-auto grid max-w-6xl gap-6 px-6 pb-16 md:grid-cols-3">
+        <section className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-4 sm:flex-row sm:justify-center">
+          <InlineAdBanner variant="leaderboard" />
+          <InlineAdBanner variant="rectangle" />
+        </section>
+
+        <section className="mx-auto grid max-w-6xl gap-6 px-6 py-10 md:grid-cols-3">
           {tiers.map((tier) => (
             <Card
               key={tier.name}
@@ -147,7 +155,12 @@ export default function PricingPage() {
           ))}
         </section>
 
-        <section className="mx-auto max-w-4xl px-6 pb-16">
+        <section className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-4 sm:flex-row sm:justify-center">
+          <InlineAdBanner variant="full-banner" />
+          <InlineAdBanner variant="rectangle" />
+        </section>
+
+        <section className="mx-auto max-w-4xl px-6 py-10">
           <h2 className="mb-6 text-center font-display text-2xl font-bold text-on-surface">
             Full Feature Comparison
           </h2>
@@ -181,7 +194,12 @@ export default function PricingPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-3xl px-6 pb-20">
+        <section className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-4 sm:flex-row sm:justify-center">
+          <InlineAdBanner variant="rectangle" />
+          <InlineAdBanner variant="rectangle" />
+        </section>
+
+        <section className="mx-auto max-w-3xl px-6 py-10">
           <h2 className="mb-6 text-center font-display text-2xl font-bold text-on-surface">
             Frequently Asked Questions
           </h2>
@@ -199,6 +217,11 @@ export default function PricingPage() {
               </details>
             ))}
           </div>
+        </section>
+
+        <section className="mx-auto flex max-w-3xl flex-col items-center gap-4 px-6 py-10 sm:flex-row sm:justify-center">
+          <InlineAdBanner variant="leaderboard" />
+          <InlineAdBanner variant="rectangle" />
         </section>
       </main>
       <Footer />

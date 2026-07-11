@@ -4,6 +4,7 @@ import { GenerateKeyForm } from "@/components/dashboard/generate-key-form";
 import { requireUserId } from "@/lib/auth";
 import { getUserApiKeys } from "@/lib/data/api-keys";
 import { revokeApiKeyAction } from "./actions";
+import { DashboardAdBanner } from "@/components/ads/dashboard-ad-banner";
 
 export default async function ApiKeysPage() {
   const userId = await requireUserId();
@@ -18,6 +19,8 @@ export default async function ApiKeysPage() {
           Build custom integrations and automate your link shortening workflow.
         </p>
       </div>
+
+      <DashboardAdBanner variant="leaderboard" />
 
       <div className="grid gap-6 lg:grid-cols-[2fr_1fr]">
         <div className="flex flex-col gap-6">
@@ -80,6 +83,8 @@ export default async function ApiKeysPage() {
             step.
           </p>
         </Card>
+
+        <DashboardAdBanner variant="half-page" className="mx-auto" />
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { ClicksChart } from "@/components/dashboard/clicks-chart";
 import { requireUserId, getDisplayUser } from "@/lib/auth";
 import { getDashboardStats, getRecentLinks } from "@/lib/data/links";
 import { getClicksOverTime } from "@/lib/data/analytics";
+import { DashboardAdBanner } from "@/components/ads/dashboard-ad-banner";
 
 function formatNumber(n: number) {
   if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
@@ -29,6 +30,8 @@ export default async function DashboardPage() {
           Welcome back, {user.firstName} — insights are ready for review.
         </p>
       </div>
+
+      <DashboardAdBanner variant="leaderboard" />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard icon={LinkIcon} label="Total Links" value={formatNumber(stats.totalLinks)} delta="+3%" />
@@ -117,6 +120,8 @@ export default async function DashboardPage() {
           </table>
         </div>
       </Card>
+
+      <DashboardAdBanner variant="rectangle" className="mx-auto max-w-sm" />
     </div>
   );
 }

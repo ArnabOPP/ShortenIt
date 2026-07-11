@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LinkIcon as BrokenLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
 
 export default function ExpiredPage() {
   return (
@@ -16,12 +17,8 @@ export default function ExpiredPage() {
         <Button variant="secondary">Create your own short link</Button>
       </Link>
 
-      <div className="mt-8 w-full rounded-2xl border border-outline-variant/30 bg-surface-container-lowest p-4">
-        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-on-surface-variant">Advertisement</p>
-        <div className="flex h-24 items-center justify-center rounded-xl bg-surface-container-low text-sm text-on-surface-variant">
-          Ad slot
-        </div>
-      </div>
+      <InlineAdBanner variant="rectangle" className="mt-8 w-full" />
+      <InlineAdBanner variant="leaderboard" className="w-full" />
     </div>
   );
 }

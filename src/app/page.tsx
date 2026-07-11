@@ -5,6 +5,8 @@ import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { HeroShortenForm } from "@/components/marketing/hero-shorten-form";
 import { DashboardPreview } from "@/components/marketing/dashboard-preview";
+import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
+import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -71,9 +73,10 @@ const steps = [
 export default function HomePage() {
   return (
     <div className="flex min-h-dvh flex-col">
+      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
-        <section className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 py-20 text-center">
+        <section className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-10 text-center">
           <h1 className="font-display text-4xl font-extrabold tracking-tight text-on-surface sm:text-5xl">
             Shrink Links. <span className="text-primary">Grow Revenue.</span>
           </h1>
@@ -92,9 +95,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="features" className="bg-surface-container-low py-20">
+        <section className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-4 sm:flex-row sm:justify-center">
+          <InlineAdBanner variant="leaderboard" />
+          <InlineAdBanner variant="rectangle" />
+        </section>
+
+        <section id="features" className="bg-surface-container-low py-10">
           <div className="mx-auto max-w-6xl px-6">
-            <div className="mb-12 text-center">
+            <div className="mb-8 text-center">
               <h2 className="font-display text-3xl font-bold text-on-surface">
                 Powerful Features for Growth
               </h2>
@@ -116,7 +124,12 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-20">
+        <section className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-4 sm:flex-row sm:justify-center">
+          <InlineAdBanner variant="full-banner" />
+          <InlineAdBanner variant="rectangle" />
+        </section>
+
+        <section className="py-10">
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2">
             <div>
               <h2 className="font-display text-3xl font-bold text-on-surface">
@@ -140,9 +153,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-20">
+        <section className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-4 sm:flex-row sm:justify-center">
+          <InlineAdBanner variant="rectangle" />
+          <InlineAdBanner variant="rectangle" />
+        </section>
+
+        <section className="py-10">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="mb-12 text-center font-display text-3xl font-bold text-on-surface">
+            <h2 className="mb-8 text-center font-display text-3xl font-bold text-on-surface">
               Loved by Performance Marketers
             </h2>
             <div className="grid gap-6 md:grid-cols-3">
@@ -168,7 +186,12 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="bg-primary py-16">
+        <section className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-4 sm:flex-row sm:justify-center">
+          <InlineAdBanner variant="leaderboard" />
+          <InlineAdBanner variant="rectangle" />
+        </section>
+
+        <section className="bg-primary py-10">
           <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-6 text-center">
             <h2 className="font-display text-2xl font-bold text-on-primary sm:text-3xl">
               Ready to maximize your link potential?
@@ -189,6 +212,10 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl px-6 py-6">
+          <InlineAdBanner variant="leaderboard" className="mx-auto" />
         </section>
       </main>
       <Footer />

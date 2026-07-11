@@ -3,6 +3,8 @@ import { Mail, MessageCircle } from "lucide-react";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { Card } from "@/components/ui/card";
+import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
+import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
 
 export const metadata: Metadata = {
   title: "Contact | ShortenIt",
@@ -12,16 +14,22 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="flex min-h-dvh flex-col">
+      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
-        <div className="mx-auto max-w-2xl px-6 py-16 text-center">
+        <div className="mx-auto max-w-2xl px-6 py-10 text-center">
           <h1 className="font-display text-3xl font-bold text-on-surface">Contact us</h1>
           <p className="mt-3 text-on-surface-variant">
             Questions about your account, a link, or a billing issue? Reach out and we&apos;ll get back to
             you.
           </p>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <InlineAdBanner variant="leaderboard" />
+            <InlineAdBanner variant="rectangle" />
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <Card className="flex flex-col items-center gap-3 p-6">
               <Mail className="h-6 w-6 text-primary" />
               <p className="font-display font-semibold text-on-surface">Email support</p>
@@ -42,6 +50,11 @@ export default function ContactPage() {
                 sales@shortenitpro.vercel.app
               </a>
             </Card>
+          </div>
+
+          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <InlineAdBanner variant="rectangle" />
+            <InlineAdBanner variant="rectangle" />
           </div>
         </div>
       </main>

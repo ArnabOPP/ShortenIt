@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import { ShieldCheck, ArrowRight, Link as LinkIcon } from "lucide-react";
 import { AdsterraBanner } from "@/components/ads/adsterra-banner";
-import { AdsterraSocialBar } from "@/components/ads/adsterra-social-bar";
-import { AdsterraPopunder } from "@/components/ads/adsterra-popunder";
 import { ADSTERRA } from "@/lib/ads/adsterra";
 
 const COUNTDOWN_SECONDS = 5;
@@ -37,11 +35,6 @@ export function Interstitial({ targetUrl }: { targetUrl: string }) {
 
   return (
     <div className="mx-auto grid max-w-6xl gap-6 px-6 py-16 lg:grid-cols-[176px_1fr_176px]">
-      {/* Site-scoped ad scripts — only load on this monetized redirect page,
-          never on marketing pages. */}
-      <AdsterraSocialBar />
-      <AdsterraPopunder />
-
       <AdSlot className="hidden lg:block" />
 
       <div className="flex flex-col gap-6">
@@ -80,6 +73,11 @@ export function Interstitial({ targetUrl }: { targetUrl: string }) {
             <ShieldCheck className="h-4 w-4" />
             VERIFIED SAFE LINK BY SHORTENIT SECURITY
           </div>
+        </div>
+
+        <div className="flex flex-col items-center gap-2 rounded-2xl border border-outline-variant/30 bg-surface-container-lowest p-4">
+          <p className="w-full text-xs font-medium uppercase tracking-wide text-on-surface-variant">Advertisement</p>
+          <AdsterraBanner {...ADSTERRA.banner468x60} />
         </div>
 
         <div className="flex flex-col items-center gap-2 rounded-2xl border border-outline-variant/30 bg-surface-container-lowest p-4">

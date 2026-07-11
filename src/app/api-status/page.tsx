@@ -3,6 +3,8 @@ import { CheckCircle2 } from "lucide-react";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { Card } from "@/components/ui/card";
+import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
+import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
 
 const components = [
   { name: "Redirect Engine", description: "Short-link resolution and redirects" },
@@ -14,9 +16,10 @@ const components = [
 export default function ApiStatusPage() {
   return (
     <div className="flex min-h-dvh flex-col">
+      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
-        <div className="mx-auto max-w-2xl px-6 py-16">
+        <div className="mx-auto max-w-2xl px-6 py-10">
           <div className="flex items-center gap-3">
             <CheckCircle2 className="h-7 w-7 text-secondary" />
             <h1 className="font-display text-2xl font-bold text-on-surface">All systems operational</h1>
@@ -29,6 +32,11 @@ export default function ApiStatusPage() {
             </Link>{" "}
             to let us know.
           </p>
+
+          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <InlineAdBanner variant="leaderboard" />
+            <InlineAdBanner variant="rectangle" />
+          </div>
 
           <div className="mt-8 flex flex-col gap-3">
             {components.map((c) => (
@@ -43,6 +51,11 @@ export default function ApiStatusPage() {
                 </span>
               </Card>
             ))}
+          </div>
+
+          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <InlineAdBanner variant="rectangle" />
+            <InlineAdBanner variant="rectangle" />
           </div>
         </div>
       </main>

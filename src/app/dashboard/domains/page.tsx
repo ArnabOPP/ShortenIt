@@ -4,6 +4,7 @@ import { AddDomainForm } from "@/components/dashboard/add-domain-form";
 import { requireUserId } from "@/lib/auth";
 import { getUserDomains } from "@/lib/data/domains";
 import { removeDomainAction } from "./actions";
+import { DashboardAdBanner } from "@/components/ads/dashboard-ad-banner";
 
 export default async function DomainsPage() {
   const userId = await requireUserId();
@@ -17,6 +18,8 @@ export default async function DomainsPage() {
           Connect your own brand to ShortenIt with white-labeled short URLs.
         </p>
       </div>
+
+      <DashboardAdBanner variant="leaderboard" />
 
       <Card>
         <CardHeader>
@@ -100,6 +103,8 @@ export default async function DomainsPage() {
           </p>
         </CardContent>
       </Card>
+
+      <DashboardAdBanner variant="rectangle" className="mx-auto max-w-sm" />
     </div>
   );
 }

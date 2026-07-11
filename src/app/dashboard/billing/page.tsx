@@ -5,6 +5,7 @@ import { CancelButton } from "@/components/billing/cancel-button";
 import { requireUserId, getDisplayUser } from "@/lib/auth";
 import { getBillingInfo } from "@/lib/data/billing";
 import { isRazorpayConfigured } from "@/lib/razorpay";
+import { DashboardAdBanner } from "@/components/ads/dashboard-ad-banner";
 
 export default async function BillingPage() {
   const userId = await requireUserId();
@@ -81,6 +82,8 @@ export default async function BillingPage() {
           </CardContent>
         </Card>
       )}
+
+      <DashboardAdBanner variant="leaderboard" />
     </div>
   );
 }

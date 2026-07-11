@@ -5,6 +5,7 @@ import { ClicksChart } from "@/components/dashboard/clicks-chart";
 import { requireUserId } from "@/lib/auth";
 import { getDashboardStats, getLinksTable } from "@/lib/data/links";
 import { getClicksOverTime, getTopReferrers } from "@/lib/data/analytics";
+import { DashboardAdBanner } from "@/components/ads/dashboard-ad-banner";
 
 export default async function AnalyticsPage() {
   const userId = await requireUserId();
@@ -26,6 +27,8 @@ export default async function AnalyticsPage() {
           Performance across all of your links.
         </p>
       </div>
+
+      <DashboardAdBanner variant="leaderboard" />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard icon={Link2} label="Total Links" value={stats.totalLinks.toLocaleString()} />
@@ -92,6 +95,8 @@ export default async function AnalyticsPage() {
           </div>
         </Card>
       </div>
+
+      <DashboardAdBanner variant="rectangle" className="mx-auto max-w-sm" />
     </div>
   );
 }

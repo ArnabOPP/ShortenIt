@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Navbar } from "@/components/marketing/navbar";
 import { Footer } from "@/components/marketing/footer";
 import { AdsterraNativeBanner } from "@/components/ads/adsterra-native-banner";
+import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
+import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
 import { getBlogPost, blogPosts } from "@/lib/blog-posts";
 
 export function generateStaticParams() {
@@ -30,11 +32,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = getBlogPost(slug);
   if (!post) notFound();
 
+  const mid = Math.ceil(post.content.length / 2);
+  const firstHalf = post.content.slice(0, mid);
+  const secondHalf = post.content.slice(mid);
+
   return (
     <div className="flex min-h-dvh flex-col">
+      <WallpaperSkyscrapers />
       <Navbar />
       <main className="flex-1">
-        <article className="mx-auto max-w-2xl px-6 py-16">
+        <article className="mx-auto max-w-2xl px-6 py-10">
           <Link href="/blog" className="text-sm font-medium text-primary hover:underline">
             ← Back to Guides
           </Link>
@@ -43,8 +50,27 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             · {post.readMinutes} min read
           </p>
           <h1 className="mt-2 font-display text-3xl font-bold text-on-surface">{post.title}</h1>
+
+          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <InlineAdBanner variant="leaderboard" />
+            <InlineAdBanner variant="rectangle" />
+          </div>
+
           <div className="mt-8 flex flex-col gap-5 text-on-surface-variant">
-            {post.content.map((paragraph, i) => (
+            {firstHalf.map((paragraph, i) => (
+              <p key={i} className="leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <div className="my-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <InlineAdBanner variant="rectangle" />
+            <InlineAdBanner variant="rectangle" />
+          </div>
+
+          <div className="flex flex-col gap-5 text-on-surface-variant">
+            {secondHalf.map((paragraph, i) => (
               <p key={i} className="leading-relaxed">
                 {paragraph}
               </p>
@@ -61,6 +87,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <Link href="/" className="mt-2 inline-block text-sm font-medium text-primary hover:underline">
               Shorten your first link →
             </Link>
+          </div>
+
+          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <InlineAdBanner variant="leaderboard" />
+            <InlineAdBanner variant="rectangle" />
           </div>
         </article>
       </main>

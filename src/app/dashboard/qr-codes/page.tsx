@@ -3,6 +3,7 @@ import { Download, QrCode as QrCodeIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { requireUserId } from "@/lib/auth";
 import { getLinksTable } from "@/lib/data/links";
+import { DashboardAdBanner } from "@/components/ads/dashboard-ad-banner";
 
 export default async function QrCodesPage() {
   const userId = await requireUserId();
@@ -29,6 +30,8 @@ export default async function QrCodesPage() {
           Every link automatically gets a scannable QR code — download it for print or digital use.
         </p>
       </div>
+
+      <DashboardAdBanner variant="leaderboard" />
 
       {codes.length === 0 ? (
         <Card className="flex flex-col items-center gap-3 p-12 text-center">

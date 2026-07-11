@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Link as LinkIcon, Gauge, Radar } from "lucide-react";
+import { InlineAdBanner } from "@/components/ads/inline-ad-banner";
+import { WallpaperSkyscrapers } from "@/components/ads/wallpaper-skyscrapers";
 
 export function AuthSplitLayout({
   children,
@@ -13,7 +15,8 @@ export function AuthSplitLayout({
 }) {
   return (
     <div className="grid min-h-dvh md:grid-cols-2">
-      <div className="hidden flex-col justify-center gap-8 bg-surface-container-low px-12 py-16 md:flex">
+      <WallpaperSkyscrapers />
+      <div className="hidden flex-col justify-center gap-6 bg-surface-container-low px-12 py-10 md:flex">
         <Link href="/" className="flex items-center gap-2 font-display text-xl font-bold text-primary">
           <LinkIcon className="h-5 w-5" strokeWidth={2.5} />
           ShortenIt
@@ -46,9 +49,13 @@ export function AuthSplitLayout({
             {imageCaption}
           </span>
         </div>
+        <InlineAdBanner variant="full-banner" />
+        <InlineAdBanner variant="rectangle" />
       </div>
-      <div className="flex items-center justify-center bg-background px-6 py-16">
+      <div className="flex flex-col items-center justify-center gap-4 bg-background px-6 py-10">
         {children}
+        <InlineAdBanner variant="rectangle" />
+        <InlineAdBanner variant="full-banner" />
       </div>
     </div>
   );
